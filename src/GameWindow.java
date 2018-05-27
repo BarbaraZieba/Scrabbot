@@ -15,7 +15,7 @@ public class GameWindow extends JFrame {
 
         setVisible(true);
         pack();
-        setResizable(false);
+     //   setResizable(false);
 
         //test dodawania literek na planszy
         boardSwing.setLetter('b', 6, 7);

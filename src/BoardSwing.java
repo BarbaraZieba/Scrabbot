@@ -6,7 +6,8 @@ public class BoardSwing extends JPanel {
 
     public BoardSwing() {
         tiles = new LetterSwing[15][15];
-        setLayout(new GridLayout(15, 15, 1, 1));
+        setBackground(new Color(125, 125, 125));
+        setLayout(new GridLayout(15, 15, 3, 3));
         for (int j = 0; j < 15; j++)
             for (int i = 0; i < 15; i++) {
                 tiles[i][j] = new LetterSwing();
