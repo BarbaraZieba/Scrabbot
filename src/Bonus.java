@@ -1,12 +1,8 @@
-public class Bonus {
-    public Boolean isword;
-    public Boolean istriple;
-    public int row;
-    public int column;
+abstract class Bonus {
+    protected int row;
+    protected int column;
 
-    public Bonus(Boolean isword, Boolean istriple, int row, int column) {
-        this.isword = isword;
-        this.istriple = istriple;
+    public Bonus(int row, int column) {
         this.row = row;
         this.column = column;
     }
