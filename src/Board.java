@@ -6,12 +6,14 @@ public class Board {
     public ArrayList<Tile> tiles;
     public ArrayList<Move> history;
     public ArrayList<Bonus> bonuses;
+    public ArrayList<Player> players;
 
-    public Board (){
+    public Board (ArrayList<Player> players){
         board = new Character[15][15];
         history = new ArrayList<Move>();
         tiles = new ArrayList<Tile>();
         bonuses = new ArrayList<Bonus>();
+        this.players = players;
         bonuses.add(new StartBonus(7,7));
         Collections.addAll(bonuses, new TWBonus(0,0), new TWBonus(0,7),
                 new TWBonus(0,14), new TWBonus(7,0),
@@ -51,6 +53,7 @@ public class Board {
         for (Tile t: move.tiles) {
             board[t.row][t.column] = t.letter;
         }
+        move.player.score += move.score;
     }
 
     public void deletelastmove (){
@@ -60,6 +63,7 @@ public class Board {
             board[t.row][t.column] = null;
             tiles.remove(t);
         }
+        last.player.score -= last.score;
     }
 
 }
