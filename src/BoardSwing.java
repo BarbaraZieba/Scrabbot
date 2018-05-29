@@ -1,11 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BoardSwing extends JPanel {
     private CellSwing[][] tiles;
-
+    public Board board;
     public BoardSwing() {
         tiles = new CellSwing[15][15];
+        board = new Board(new ArrayList<Player>(List.of(new Player("basia"))));
         setBackground(new Color(125, 125, 125));
         setLayout(new GridLayout(15, 15, 3, 3));
         for (int j = 0; j < 15; j++)
@@ -14,9 +17,10 @@ public class BoardSwing extends JPanel {
                 add(tiles[i][j]);
             }
         setPreferredSize(new Dimension(600, 600));
+        for (Bonus b: board.bonuses) {
+            tiles[b.row][b.column].setBonus(b.ordinalnumber);
+        }
     }
 
-    public void setBonus(int bonusType, int row, int column) {
-        tiles[row][column].setBonus(bonusType);
-    }
+   // public void setBonus(int bonusType, int row, int column) {tiles[row][column].setBonus(bonusType);}
 }

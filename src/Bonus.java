@@ -1,4 +1,5 @@
 abstract class Bonus {
+    public int ordinalnumber;
     protected int row;
     protected int column;
 

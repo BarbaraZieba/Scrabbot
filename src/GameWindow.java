@@ -33,10 +33,10 @@ public class GameWindow extends JFrame {
      //   setResizable(false);
 
         //test dodawania bonusow na planszy
-        boardSwing.setBonus(CellSwing.TripleWord, 0, 0);
-        boardSwing.setBonus(CellSwing.DoubleWord, 1, 1);
-        boardSwing.setBonus(CellSwing.DoubleLetter, 6, 8);
-        boardSwing.setBonus(CellSwing.TripleLetter, 5, 4);
-        boardSwing.setBonus(CellSwing.Center, 7, 7);
+       // boardSwing.setBonus(CellSwing.TripleWord, 0, 0);
+       // boardSwing.setBonus(CellSwing.DoubleWord, 1, 1);
+       // boardSwing.setBonus(CellSwing.DoubleLetter, 6, 8);
+       // boardSwing.setBonus(CellSwing.TripleLetter, 5, 4);
+       // boardSwing.setBonus(CellSwing.Center, 7, 7);
     }
 }
