@@ -9,17 +9,20 @@ public class CellSwing extends JButton {
     public static final int TripleLetter = 4;
     public static final int Center = 5;
     private int type;
+    private Board board;
+    private int i, j;
+
+    public CellSwing(int i, int j, Board board) {
+        this(i, j);
+        this.board = board;
+    }
 
     public CellSwing(int i, int j) {
         super();
         this.type = Empty;
-        //Test: klikanie zmienia typ między DoubleWord / Empty
-        addActionListener(e -> {
-            System.out.println(i + " : " + j + " (" + this.type + ")");
-            if (this.type == DoubleWord)
-                this.type = Empty;
-            else this.type = DoubleWord;
-        });
+        this.i = i;
+        this.j = j;
+        addActionListener(e -> System.out.println(board.board[i][j] + " @ " + i + ":" + j));
     }
 
     public void setBonus(int type) {
@@ -57,10 +60,23 @@ public class CellSwing extends JButton {
                 break;
         }
         g.fillRect(0, 0, width, height);
-        int fontsize = width / 3;
-        g.setFont(new Font("TimesRoman", Font.PLAIN, fontsize));
-        g.setColor(Color.BLACK);
-        g.drawString(message, width / 6, height * 2 / 3);
+        Character c = board.board[i][j];
+        if (c == null) {
+            g.setFont(new Font("TimesRoman", Font.PLAIN, width / 3));
+
+            g.setColor(Color.BLACK);
+            g.drawString(message, width / 6, height * 2 / 3);
+        } else {
+            g.setColor(new Color(220, 200, 100));
+            int offset = 3;
+            //g.fillRoundRect(offset, offset, width - 2 * offset, height - 2 * offset, 10*offset, 10*offset);
+            g.fillRect(offset, offset, width - 2 * offset, height - 2 * offset);
+
+            g.setFont(new Font("TimesRoman", Font.BOLD, width / 2));
+            message = c.toString();
+            g.setColor(Color.BLACK);
+            g.drawString(message, width* 3 /7, height * 2 / 3);
+        }
     }
 }
 

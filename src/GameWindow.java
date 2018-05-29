@@ -30,7 +30,7 @@ public class GameWindow extends JFrame {
 
             }
         });
-     //   setResizable(false);
+        setResizable(false);
 
         //test dodawania bonusow na planszy
        // boardSwing.setBonus(CellSwing.TripleWord, 0, 0);
