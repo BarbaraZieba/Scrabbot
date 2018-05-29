@@ -53,4 +53,13 @@ public class Board {
         }
     }
 
+    public void deletelastmove (){
+        Move last = history.get(history.size()-1);
+        history.remove(history.size()-1);
+        for (Tile t: last.tiles){
+            board[t.row][t.column] = null;
+            tiles.remove(t);
+        }
+    }
+
 }
