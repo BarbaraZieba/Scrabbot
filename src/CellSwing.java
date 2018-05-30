@@ -22,10 +22,7 @@ public class CellSwing extends JButton {
         this.type = Empty;
         this.i = i;
         this.j = j;
-        addActionListener(e -> {
-            String word = JOptionPane.showInputDialog("Wprowadź słowo: ");
-            board.placeWord(word, i, j, true);
-        });
+        addActionListener(e -> MoveDialog.call(i, j, this));
     }
 
     public void setBonus(int type) {

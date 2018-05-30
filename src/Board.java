@@ -73,8 +73,8 @@ public class Board {
         for(int i = 0; i<word.length(); i++)
         {
             board[column][row] = word.charAt(i);
-            if(isVertical) column++;
-            else row++;
+            if(isVertical) row++;
+            else column++;
         }
     }
 }
