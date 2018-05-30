@@ -22,7 +22,10 @@ public class CellSwing extends JButton {
         this.type = Empty;
         this.i = i;
         this.j = j;
-        addActionListener(e -> System.out.println(board.board[i][j] + " @ " + i + ":" + j));
+        addActionListener(e -> {
+            String word = JOptionPane.showInputDialog("Wprowadź słowo: ");
+            board.placeWord(word, i, j, true);
+        });
     }
 
     public void setBonus(int type) {
@@ -75,7 +78,7 @@ public class CellSwing extends JButton {
             g.setFont(new Font("TimesRoman", Font.BOLD, width / 2));
             message = c.toString();
             g.setColor(Color.BLACK);
-            g.drawString(message, width* 3 /7, height * 2 / 3);
+            g.drawString(message, width * 3 / 7, height * 2 / 3);
         }
     }
 }

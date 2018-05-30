@@ -65,5 +65,16 @@ public class Board {
         }
         last.player.score -= last.score;
     }
-
+    /** głupia funkcja ale potrzebna
+     należy ją przerobić tak żeby była łatwa w obsłudze
+     ale wywoływała addmove od obecnego gracza, tworzyła tilevector itd
+     */
+     public void placeWord(String word, int column, int row, boolean isVertical){
+        for(int i = 0; i<word.length(); i++)
+        {
+            board[column][row] = word.charAt(i);
+            if(isVertical) column++;
+            else row++;
+        }
+    }
 }
