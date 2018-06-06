@@ -8,41 +8,39 @@ public class Tile {
 
     static Map<Character,Integer> value = new TreeMap<>();
     static {
-        value.put('A',1);
-        value.put('Ą',5);
-        value.put('B',3);
-        value.put('C',2);
-        value.put('Ć',6);
-        value.put('D',2);
-        value.put('E',1);
-        value.put('Ę',5);
-        value.put('F',5);
-        value.put('G',3);
-        value.put('H',3);
-        value.put('I',1);
-        value.put('J',3);
-        value.put('K',2);
-        value.put('L',2);
-        value.put('Ł',3);
-        value.put('M',2);
-        value.put('N',1);
-        value.put('Ń',7);
-        value.put('O',1);
-        value.put('Ó',5);
-        value.put('P',2);
-        value.put('R',1);
-        value.put('S',1);
-        value.put('Ś',5);
-        value.put('T',2);
-        value.put('U',3);
-        value.put('W',1);
-        value.put('Y',2);
-        value.put('Z',1);
-        value.put('Ź',9);
-        value.put('Ż',5);
-
-
-
+        value.put('a',1);
+        value.put('ą',5);
+        value.put('b',3);
+        value.put('c',2);
+        value.put('ć',6);
+        value.put('d',2);
+        value.put('e',1);
+        value.put('ę',5);
+        value.put('f',5);
+        value.put('g',3);
+        value.put('h',3);
+        value.put('i',1);
+        value.put('j',3);
+        value.put('k',2);
+        value.put('l',2);
+        value.put('ł',3);
+        value.put('m',2);
+        value.put('n',1);
+        value.put('ń',7);
+        value.put('o',1);
+        value.put('ó',5);
+        value.put('p',2);
+        value.put('r',1);
+        value.put('s',1);
+        value.put('ś',5);
+        value.put('t',2);
+        value.put('u',3);
+        value.put('w',1);
+        value.put('y',2);
+        value.put('z',1);
+        value.put('ź',9);
+        value.put('ż',5);
+        value.put(' ',5);
     }
 
 

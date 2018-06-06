@@ -10,7 +10,7 @@ public class BoardSwing extends JPanel {
 
     public BoardSwing() throws IOException {
         tiles = new CellSwing[15][15];
-        board = new Board(new ArrayList<Player>(List.of(new Player("basia"))));
+        board = new Board();
         setBackground(new Color(125, 125, 125));
         setLayout(new GridLayout(15, 15, 3, 3));
         for (int j = 0; j < 15; j++)

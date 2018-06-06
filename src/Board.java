@@ -5,19 +5,16 @@ import java.util.Collections;
 public class Board {
     public Character[][] board;
     public ArrayList<Tile> tiles;
-    public ArrayList<Move> history;
     public ArrayList<Bonus> bonuses;
-    public ArrayList<Player> players;
     public Tree tree = Tree.getInstance();
-    private Integer currentplayer = 0;
+    public ArrayList<Move> history;
 
 
-    public Board (ArrayList<Player> players) throws IOException {
+    public Board () throws IOException {
         board = new Character[15][15];
-        history = new ArrayList<Move>();
         tiles = new ArrayList<Tile>();
+        history = new ArrayList<Move>();
         bonuses = new ArrayList<Bonus>();
-        this.players = players;
         bonuses.add(new Bonus(7,7, Bonus.Type.Center));
         Collections.addAll(bonuses, new Bonus(0,0, Bonus.Type.TripleWord), new Bonus(0,7, Bonus.Type.TripleWord),
                 new Bonus(0,14, Bonus.Type.TripleWord), new Bonus(7,0, Bonus.Type.TripleWord),
@@ -51,9 +48,6 @@ public class Board {
                 new Bonus(8,12, Bonus.Type.DoubleLetter), new Bonus(12,8, Bonus.Type.DoubleLetter));
     }
 
-    public Player getCurrentplayer() {
-        return players.get(currentplayer);
-    }
 
     public void addmove(Move move){
         this.history.add(move);
