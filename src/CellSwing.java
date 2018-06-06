@@ -2,13 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CellSwing extends JButton {
-    public static final int Empty = 0;
-    public static final int DoubleWord = 1;
-    public static final int TripleWord = 2;
-    public static final int DoubleLetter = 3;
-    public static final int TripleLetter = 4;
-    public static final int Center = 5;
-    private int type;
+    private Bonus.Type type;
     private Board board;
     private int i, j;
 
@@ -19,13 +13,13 @@ public class CellSwing extends JButton {
 
     public CellSwing(int i, int j) {
         super();
-        this.type = Empty;
+        this.type = Bonus.Type.Empty;
         this.i = i;
         this.j = j;
         addActionListener(e -> MoveDialog.call(i, j, this));
     }
 
-    public void setBonus(int type) {
+    public void setBonus(Bonus.Type type) {
         this.type = type;
     }
 

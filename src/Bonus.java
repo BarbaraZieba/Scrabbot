@@ -1,10 +1,20 @@
-abstract class Bonus {
-    public int ordinalnumber;
-    protected int row;
-    protected int column;
+public class Bonus {
+    public final Type type;
+    public final int row;
+    public final int column;
 
-    public Bonus(int row, int column) {
+    public enum Type{
+        Empty,
+        DoubleWord,
+        TripleWord,
+        DoubleLetter,
+        TripleLetter,
+        Center
+    }
+
+    public Bonus(int row, int column, Type type) {
         this.row = row;
         this.column = column;
+        this.type = type;
     }
 }

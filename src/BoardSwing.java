@@ -20,7 +20,7 @@ public class BoardSwing extends JPanel {
             }
         setPreferredSize(new Dimension(600, 600));
         for (Bonus b : board.bonuses) {
-            tiles[b.row][b.column].setBonus(b.ordinalnumber);
+            tiles[b.row][b.column].setBonus(b.type);
         }
 
         MoveDialog.setBoard(this);
