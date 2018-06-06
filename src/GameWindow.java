@@ -2,13 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.io.IOException;
 
 public class GameWindow extends JFrame {
 
     private BoardSwing boardSwing;
     private final int height;
     private final int width;
-    public GameWindow() {
+    public GameWindow() throws IOException {
         super("Scrabbot");
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,7 +31,7 @@ public class GameWindow extends JFrame {
 
             }
         });
-        setResizable(false);
+        setResizable(true);
 
         //test dodawania bonusow na planszy
        // boardSwing.setBonus(CellSwing.TripleWord, 0, 0);

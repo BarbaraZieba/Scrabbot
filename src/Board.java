@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -7,8 +8,9 @@ public class Board {
     public ArrayList<Move> history;
     public ArrayList<Bonus> bonuses;
     public ArrayList<Player> players;
+    public Tree tree = Tree.getInstance();
 
-    public Board (ArrayList<Player> players){
+    public Board (ArrayList<Player> players) throws IOException {
         board = new Character[15][15];
         history = new ArrayList<Move>();
         tiles = new ArrayList<Tile>();
@@ -69,12 +71,17 @@ public class Board {
      należy ją przerobić tak żeby była łatwa w obsłudze
      ale wywoływała addmove od obecnego gracza, tworzyła tilevector itd
      */
-     public void placeWord(String word, int column, int row, boolean isVertical){
-        for(int i = 0; i<word.length(); i++)
-        {
-            board[column][row] = word.charAt(i);
-            if(isVertical) row++;
-            else column++;
-        }
+     public Boolean placeWord(String word, int column, int row, boolean isVertical){
+         if (tree.contains(word)){
+             for(int i = 0; i<word.length(); i++)
+            {
+
+                board[column][row] = word.charAt(i);
+                if(isVertical) row++;
+                else column++;
+            }
+            return true;
+         }
+         return false;
     }
 }

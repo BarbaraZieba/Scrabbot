@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ public class BoardSwing extends JPanel {
     private CellSwing[][] tiles;
     public Board board;
 
-    public BoardSwing() {
+    public BoardSwing() throws IOException {
         tiles = new CellSwing[15][15];
         board = new Board(new ArrayList<Player>(List.of(new Player("basia"))));
         setBackground(new Color(125, 125, 125));

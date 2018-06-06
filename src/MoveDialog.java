@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class MoveDialog extends JFrame {
     private int i;
@@ -37,7 +38,7 @@ public class MoveDialog extends JFrame {
         jTextField.setPreferredSize(new Dimension(100, 20));
         ActionListener actionListener = new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 board.board.placeWord(jTextField.getText(), i, j, verticalButton.isSelected());
                 setVisible(false);
                 board.repaint();
@@ -71,6 +72,8 @@ public class MoveDialog extends JFrame {
     }
 
     public static MoveDialog getInstance() {
+        if (instance == null)
+            instance = new MoveDialog();
         return instance;
     }
 }
