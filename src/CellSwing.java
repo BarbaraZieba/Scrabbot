@@ -55,8 +55,9 @@ public class CellSwing extends JButton {
         }
         g.fillRect(0, 0, width, height);
         Character c = board.board[i][j];
+        if (c!=null) c = Character.toUpperCase(c);
         if (c == null) {
-            g.setFont(new Font("TimesRoman", Font.PLAIN, width / 3));
+            g.setFont(new Font("Arial", Font.PLAIN, width / 3));
 
             g.setColor(Color.BLACK);
             g.drawString(message, width / 6, height * 2 / 3);
@@ -66,7 +67,7 @@ public class CellSwing extends JButton {
             //g.fillRoundRect(offset, offset, width - 2 * offset, height - 2 * offset, 10*offset, 10*offset);
             g.fillRect(offset, offset, width - 2 * offset, height - 2 * offset);
 
-            g.setFont(new Font("TimesRoman", Font.BOLD, width / 2));
+            g.setFont(new Font("Arial", Font.BOLD, width / 2));
             message = c.toString();
             g.setColor(Color.BLACK);
             g.drawString(message, width * 3 / 7, height * 2 / 3);

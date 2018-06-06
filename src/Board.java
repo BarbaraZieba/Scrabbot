@@ -11,6 +11,7 @@ public class Board {
     public Tree tree = Tree.getInstance();
     private Integer currentplayer = 0;
 
+
     public Board (ArrayList<Player> players) throws IOException {
         board = new Character[15][15];
         history = new ArrayList<Move>();
@@ -78,10 +79,8 @@ public class Board {
      ale wywoływała addmove od obecnego gracza, tworzyła tilevector itd
      */
      public Boolean placeWord(String word, int column, int row, boolean isVertical){
-         
-         
-         
-         if (tree.contains(word)){
+        word = word.toLowerCase();
+        if (tree.contains(word)){
              for(int i = 0; i<word.length(); i++)
             {
 

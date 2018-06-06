@@ -55,7 +55,7 @@ public class Tree {
         bufferedReader.close();
     }
 
-    public static Boolean contains(String word){
+    public Boolean contains(String word){
         int i = 0;
         Node temp = root;
         while (i<word.length()){
