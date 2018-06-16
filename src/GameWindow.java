@@ -20,7 +20,9 @@ public class GameWindow extends JFrame {
         boardSwing = new BoardSwing();
         add(boardSwing, BorderLayout.CENTER);
 
-        add(new PlayerPanel(players.toArray()), BorderLayout.WEST);
+        add(new PlayerPanel(game, players.toArray()), BorderLayout.WEST);
+
+        add(new HistoryPanel(game), BorderLayout.EAST);
 
         setVisible(true);
         pack();

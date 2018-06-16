@@ -12,4 +12,9 @@ public class Move {
         this.score = score;
         this.word = word;
     }
+
+    @Override
+    public String toString() {
+        return player + "   " + word + " " + score;
+    }
 }
