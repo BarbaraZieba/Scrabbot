@@ -3,19 +3,24 @@ import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GameWindow extends JFrame {
 
     private BoardSwing boardSwing;
     private final int height;
     private final int width;
-    public GameWindow() throws IOException {
+    public Game game;
+    public GameWindow(ArrayList<Player> players) throws IOException {
         super("Scrabbot");
+        this.game = new Game(players);
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         boardSwing = new BoardSwing();
         add(boardSwing, BorderLayout.CENTER);
+
+        add(new PlayerPanel(players.toArray()), BorderLayout.WEST);
 
         setVisible(true);
         pack();
