@@ -8,9 +8,9 @@ public class BoardSwing extends JPanel {
     private CellSwing[][] tiles;
     public Board board;
 
-    public BoardSwing() throws IOException {
+    public BoardSwing(Game game) throws IOException {
         tiles = new CellSwing[15][15];
-        board = new Board();
+        board = game.getBoard();
         setBackground(new Color(125, 125, 125));
         setLayout(new GridLayout(15, 15, 3, 3));
         for (int j = 0; j < 15; j++)
@@ -22,7 +22,5 @@ public class BoardSwing extends JPanel {
         for (Bonus b : board.bonuses) {
             tiles[b.row][b.column].setBonus(b.type);
         }
-
-        MoveDialog.setBoard(this);
     }
 }

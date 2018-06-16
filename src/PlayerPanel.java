@@ -17,7 +17,7 @@ public class PlayerPanel extends JPanel {
                 setLayout(new BorderLayout());
                 add(playerName, BorderLayout.CENTER);
                 add(playerScore, BorderLayout.SOUTH);
-                setPreferredSize(new Dimension(150,50));
+                setPreferredSize(new Dimension(150, 50));
             }
         }
 
@@ -26,6 +26,7 @@ public class PlayerPanel extends JPanel {
             if (game.getCurrentplayer() == player)
                 setBackground(new Color(135, 190, 75));
             else setBackground(new Color(189, 189, 189));
+            playerScore.setText(player.getScore().toString());
             super.paintComponent(g);
         }
     }

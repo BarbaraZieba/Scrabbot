@@ -1,6 +1,6 @@
 public class Player {
     public String name;
-    public int score;
+    public Integer score;
 
     public Player(String name) {
         this.name = name;
@@ -16,7 +16,7 @@ public class Player {
         return name;
     }
 
-    public int getScore() {
+    public Integer getScore() {
         return score;
     }
 }

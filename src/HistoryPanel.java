@@ -9,13 +9,14 @@ public class HistoryPanel extends JPanel {
         DefaultListModel<Move> model = new DefaultListModel<>();
 
         historyList.setModel(model);
+        historyList.setBackground(new Color(125, 125, 125));
 
         JButton randomButton = new JButton("Add move to history");
         randomButton.addActionListener(e -> {
             Random random = new Random();
             Move m = new Move(game.getCurrentplayer(), null, random.nextInt(100), "jakieś słowo");
             //these two lines are doing the job
-            game.board.history.add(m);
+            game.history.add(m);
             model.addElement(m);
         });
 

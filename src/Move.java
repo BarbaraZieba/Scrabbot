@@ -15,6 +15,6 @@ public class Move {
 
     @Override
     public String toString() {
-        return player + "   " + word + " " + score;
+        return player.getName() + "   " + word + " " + score;
     }
 }

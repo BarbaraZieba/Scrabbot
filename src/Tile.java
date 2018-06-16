@@ -5,8 +5,7 @@ public class Tile {
     public Character letter;
     public int row;
     public int column;
-
-    static Map<Character,Integer> value = new TreeMap<>();
+    private static Map<Character,Integer> value = new TreeMap<>();
     static {
         value.put('a',1);
         value.put('ą',5);
@@ -44,9 +43,12 @@ public class Tile {
     }
 
 
-    public Tile(Character letter, int row, int column) {
+    public Tile(Character letter, int column, int row) {
         this.letter = letter;
         this.row = row;
         this.column = column;
+    }
+    public static int getValueOf(Character c){
+        return value.get(c);
     }
 }

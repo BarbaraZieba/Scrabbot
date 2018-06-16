@@ -6,14 +6,11 @@ public class Board {
     public Character[][] board;
     public ArrayList<Tile> tiles;
     public ArrayList<Bonus> bonuses;
-    public Tree tree = Tree.getInstance();
-    public ArrayList<Move> history;
 
 
     public Board() throws IOException {
         board = new Character[15][15];
         tiles = new ArrayList<Tile>();
-        history = new ArrayList<Move>();
         bonuses = new ArrayList<Bonus>();
         bonuses.add(new Bonus(7, 7, Bonus.Type.Center));
         Collections.addAll(bonuses, new Bonus(0, 0, Bonus.Type.TripleWord), new Bonus(0, 7, Bonus.Type.TripleWord),
@@ -49,51 +46,31 @@ public class Board {
     }
 
 
-    public void addmove(Move move) {
-        this.history.add(move);
-        this.tiles.addAll(move.tiles);
-        for (Tile t : move.tiles) {
-            board[t.row][t.column] = t.letter;
-        }
-        move.player.score += move.score;
 
-    }
-
-    public void deletelastmove() {
-        Move last = history.get(history.size() - 1);
-        history.remove(history.size() - 1);
-        for (Tile t : last.tiles) {
-            board[t.row][t.column] = null;
-            tiles.remove(t);
-        }
-        last.player.score -= last.score;
-    }
 
     /**
      * głupia funkcja ale potrzebna
      * należy ją przerobić tak żeby była łatwa w obsłudze
      * ale wywoływała addmove od obecnego gracza, tworzyła tilevector itd
      */
-    public Boolean placeWord(String word, int column, int row, boolean isVertical) {
-        word = word.toLowerCase();
-        if (!tree.contains(word))
-            return false;
+    public ArrayList<Tile> placeWord(String word, int column, int row, boolean isVertical) {
+        ArrayList<Tile> tiles = new ArrayList<>();
         if (isVertical) {
-            if (row + word.length() > 15) return false;
+            if (row + word.length() > 15) return null;
             for (int i = 0; i < word.length(); i++) {
                 Character c = board[column][row + i];
-                if (c == null) continue;
+                if (c == null) tiles.add(new Tile(word.charAt(i), column, row + i));
                 else if (c != word.charAt(i))
-                    return false;
+                    return null;
             }
         }
         if (!isVertical) {
-            if (column + word.length() > 15) return false;
+            if (column + word.length() > 15) return null;
             for (int i = 0; i < word.length(); i++) {
                 Character c = board[column + i][row];
-                if (c == null) continue;
+                if (c == null) tiles.add(new Tile(word.charAt(i), column + i, row));
                 else if (c != word.charAt(i))
-                    return false;
+                    return null;
             }
         }
         for (int i = 0; i < word.length(); i++) {
@@ -101,7 +78,7 @@ public class Board {
             if (isVertical) row++;
             else column++;
         }
-        return true;
+        return tiles;
     }
 }
 

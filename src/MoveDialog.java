@@ -7,7 +7,7 @@ import java.io.IOException;
 public class MoveDialog extends JFrame {
     private int i;
     private int j;
-    private BoardSwing board;
+    private Game game;
     private static MoveDialog instance = null;
     private JTextField jTextField = new JTextField();
     private JLabel jLabel = new JLabel();
@@ -15,10 +15,10 @@ public class MoveDialog extends JFrame {
     /**
      * Has to be called before using this class.
      */
-    public static void setBoard(BoardSwing board) {
+    public static void setGame(Game game) {
         if (instance == null)
             instance = new MoveDialog();
-        instance.board = board;
+        instance.game = game;
     }
 
     private MoveDialog() throws HeadlessException {
@@ -38,10 +38,9 @@ public class MoveDialog extends JFrame {
         jTextField.setPreferredSize(new Dimension(100, 20));
         ActionListener actionListener = new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
-                board.board.placeWord(jTextField.getText(), i, j, verticalButton.isSelected());
-                setVisible(false);
-                board.repaint();
+            public void actionPerformed(ActionEvent e) {
+                if (game.currentPlayerMove(jTextField.getText(), i, j, verticalButton.isSelected()))
+                    setVisible(false);
             }
         };
         jTextField.addActionListener(actionListener);

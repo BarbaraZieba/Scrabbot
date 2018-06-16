@@ -8,36 +8,48 @@ import java.util.ArrayList;
 public class GameWindow extends JFrame {
 
     private BoardSwing boardSwing;
+    private PlayerPanel playerPanel;
+    private HistoryPanel historyPanel;
     private final int height;
     private final int width;
     public Game game;
+
     public GameWindow(ArrayList<Player> players) throws IOException {
         super("Scrabbot");
-        this.game = new Game(players);
+        this.game = new Game(this, players);
+        MoveDialog.setGame(game);
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        boardSwing = new BoardSwing();
+        boardSwing = new BoardSwing(game);
         add(boardSwing, BorderLayout.CENTER);
 
-        add(new PlayerPanel(game, players.toArray()), BorderLayout.WEST);
+        playerPanel = new PlayerPanel(game, players.toArray());
+        add(playerPanel, BorderLayout.WEST);
 
-        add(new HistoryPanel(game), BorderLayout.EAST);
+        historyPanel = new HistoryPanel(game);
+        add(historyPanel, BorderLayout.EAST);
 
         setVisible(true);
         pack();
 
+        // well at this point that's legacy code
         height = getHeight();
         width = getWidth();
-
         addComponentListener(new ComponentAdapter() {
-           //this doesnt really works
+            //this doesnt really works
             public void componentResized(ComponentEvent arg0) {
                 Rectangle b = arg0.getComponent().getBounds();
-                arg0.getComponent().setBounds(b.x, b.y, b.width, (b.width*height)/width);
+                arg0.getComponent().setBounds(b.x, b.y, b.width, (b.width * height) / width);
 
             }
         });
         setResizable(true);
+    }
+
+    public void repaintChildren() {
+        boardSwing.repaint();
+        playerPanel.repaint();
+        historyPanel.repaint();
     }
 }
