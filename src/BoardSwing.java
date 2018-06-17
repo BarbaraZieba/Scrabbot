@@ -6,11 +6,10 @@ import java.util.List;
 
 public class BoardSwing extends JPanel {
     private CellSwing[][] tiles;
-    public Board board;
 
     public BoardSwing(Game game) throws IOException {
         tiles = new CellSwing[15][15];
-        board = game.getBoard();
+        Board board = game.getBoard();
         setBackground(new Color(125, 125, 125));
         setLayout(new GridLayout(15, 15, 3, 3));
         for (int j = 0; j < 15; j++)

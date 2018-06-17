@@ -9,8 +9,8 @@ public class MoveDialog extends JFrame {
     private int j;
     private Game game;
     private static MoveDialog instance = null;
-    private JTextField jTextField = new JTextField();
-    private JLabel jLabel = new JLabel();
+    private JTextField jTextField;
+    private JLabel jLabel;
 
     /**
      * Has to be called before using this class.
@@ -35,6 +35,7 @@ public class MoveDialog extends JFrame {
         radioPanel.add(verticalButton);
         horizontalButton.setSelected(true);
 
+        jTextField = new JTextField();
         jTextField.setPreferredSize(new Dimension(100, 20));
         ActionListener actionListener = new ActionListener() {
             @Override
@@ -50,6 +51,7 @@ public class MoveDialog extends JFrame {
         cancelButton.addActionListener(e -> setVisible(false));
 
         setLayout(new FlowLayout());
+        jLabel = new JLabel();
         add(jLabel);
         add(jTextField);
         add(radioPanel);

@@ -31,10 +31,10 @@ public class PlayerPanel extends JPanel {
         }
     }
 
-    public PlayerPanel(Game game, Object[] players) {
+    public PlayerPanel(Game game) {
         setLayout(new FlowLayout());
-        for (int i = 0; i < players.length; i++)
-            add(new PlayerRenderer(game, players[i]));
+        for (Player player :  game.getPlayers())
+            add(new PlayerRenderer(game, player));
         setBackground(new Color(0, 50, 0));
         setPreferredSize(new Dimension(150, 600));
     }

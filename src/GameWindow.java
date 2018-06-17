@@ -12,7 +12,7 @@ public class GameWindow extends JFrame {
     private HistoryPanel historyPanel;
     private final int height;
     private final int width;
-    public Game game;
+    private Game game;
 
     public GameWindow(ArrayList<Player> players) throws IOException {
         super("Scrabbot");
@@ -24,13 +24,14 @@ public class GameWindow extends JFrame {
         boardSwing = new BoardSwing(game);
         add(boardSwing, BorderLayout.CENTER);
 
-        playerPanel = new PlayerPanel(game, players.toArray());
+        playerPanel = new PlayerPanel(game);
         add(playerPanel, BorderLayout.WEST);
 
         historyPanel = new HistoryPanel(game);
         add(historyPanel, BorderLayout.EAST);
 
         setVisible(true);
+        setResizable(true);
         pack();
 
         // well at this point that's legacy code
@@ -44,12 +45,15 @@ public class GameWindow extends JFrame {
 
             }
         });
-        setResizable(true);
     }
 
     public void repaintChildren() {
         boardSwing.repaint();
         playerPanel.repaint();
         historyPanel.repaint();
+    }
+
+    public HistoryPanel getHistoryPanel() {
+        return historyPanel;
     }
 }

@@ -27,8 +27,7 @@ public class Bag {
 
     public Character getRandomTile() {
         int r = random.nextInt(remainingTiles());
-        Character tile = tiles.get(r);
-        tiles.remove(r);
+        Character tile = tiles.remove(r);
         return tile;
     }
 

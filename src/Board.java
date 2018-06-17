@@ -49,9 +49,9 @@ public class Board {
 
 
     /**
-     * głupia funkcja ale potrzebna
-     * należy ją przerobić tak żeby była łatwa w obsłudze
-     * ale wywoływała addmove od obecnego gracza, tworzyła tilevector itd
+     * Metoda oblicza listę tilesów do położenia i przekazuje je z powrotem do game.
+     * Potrzebne jeszcze jest obliczenie wyniku i porządne sprawdzenie poprawności.
+     * Tak swoją drogą to wszędzie mam board[column][row] (inaczej niż macierze), mam nadzieję, że to OK.
      */
     public ArrayList<Tile> placeWord(String word, int column, int row, boolean isVertical) {
         ArrayList<Tile> tiles = new ArrayList<>();
@@ -73,11 +73,13 @@ public class Board {
                     return null;
             }
         }
+        /* this is obsolete now
         for (int i = 0; i < word.length(); i++) {
             board[column][row] = word.charAt(i);
             if (isVertical) row++;
             else column++;
         }
+        */
         return tiles;
     }
 }

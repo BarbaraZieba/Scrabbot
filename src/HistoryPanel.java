@@ -1,29 +1,28 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.Random;
 
 public class HistoryPanel extends JPanel {
+    private DefaultListModel<Move> listModel;
 
     public HistoryPanel(Game game) {
         JList<Move> historyList = new JList<>();
-        DefaultListModel<Move> model = new DefaultListModel<>();
+        listModel = new DefaultListModel<>();
 
-        historyList.setModel(model);
-        historyList.setBackground(new Color(125, 125, 125));
+        historyList.setModel(listModel);
+        historyList.setBackground(new Color(0, 50, 0));
+        historyList.setForeground(new Color(220, 200, 100));
 
-        JButton randomButton = new JButton("Add move to history");
-        randomButton.addActionListener(e -> {
-            Random random = new Random();
-            Move m = new Move(game.getCurrentplayer(), null, random.nextInt(100), "jakieś słowo");
-            //these two lines are doing the job
-            game.history.add(m);
-            model.addElement(m);
-        });
+        JButton revertButton = new JButton("Revert last move");
+        revertButton.addActionListener(e -> game.deletelastmove());
 
         setLayout(new BorderLayout());
         add(new JLabel("Move history"), BorderLayout.NORTH);
         add(historyList, BorderLayout.CENTER);
-        add(randomButton, BorderLayout.SOUTH);
+        add(revertButton, BorderLayout.SOUTH);
         setPreferredSize(new Dimension(150, 600));
+    }
+
+    public DefaultListModel<Move> getListModel() {
+        return listModel;
     }
 }

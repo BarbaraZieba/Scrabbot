@@ -33,7 +33,7 @@ public class NewGameDialog extends JFrame {
                     JOptionPane.showMessageDialog(new JFrame(), ex.getMessage());
                 }
             } else {
-                JOptionPane.showMessageDialog(new JFrame(), "There has to be atleast 1 player.");
+                JOptionPane.showMessageDialog(new JFrame(), "There has to be at least 1 player.");
             }
         });
         JPanel playerPanel = new JPanel();
