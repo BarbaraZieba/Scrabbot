@@ -19,6 +19,7 @@ public class GameWindow extends JFrame {
         super("Scrabbot");
         this.game = new Game(this, players);
         MoveDialog.setGame(game);
+        ExchangeDialog.setGame(game);
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

@@ -66,4 +66,8 @@ public class Game extends Board {
     public ArrayList<Player> getPlayers() {
         return players;
     }
+
+    public Bag getBag() {
+        return bag;
+    }
 }
