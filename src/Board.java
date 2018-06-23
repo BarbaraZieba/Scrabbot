@@ -1,3 +1,5 @@
+import javafx.util.Pair;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,12 +8,14 @@ public class Board {
     public Character[][] board;
     public ArrayList<Tile> tiles;
     public ArrayList<Bonus> bonuses;
+    public Tree tree;
 
 
     public Board() throws IOException {
         board = new Character[15][15];
         tiles = new ArrayList<Tile>();
         bonuses = new ArrayList<Bonus>();
+        tree = Tree.getInstance();
         bonuses.add(new Bonus(7, 7, Bonus.Type.Center));
         Collections.addAll(bonuses, new Bonus(0, 0, Bonus.Type.TripleWord), new Bonus(0, 7, Bonus.Type.TripleWord),
                 new Bonus(0, 14, Bonus.Type.TripleWord), new Bonus(7, 0, Bonus.Type.TripleWord),
@@ -53,14 +57,24 @@ public class Board {
      * Potrzebne jeszcze jest obliczenie wyniku i porządne sprawdzenie poprawności.
      * Tak swoją drogą to wszędzie mam board[column][row] (inaczej niż macierze), mam nadzieję, że to OK.
      */
-    public ArrayList<Tile> placeWord(String word, int column, int row, boolean isVertical) {
+    public Pair<ArrayList<Tile>,Integer> placeWord(String word, int column, int row, boolean isVertical) {
         ArrayList<Tile> tiles = new ArrayList<>();
+        Integer score = 0;
+        if (!tree.contains(word))
+            return null;
         if (isVertical) {
             if (row + word.length() > 15) return null;
             for (int i = 0; i < word.length(); i++) {
                 Character c = board[column][row + i];
                 if (c == null) tiles.add(new Tile(word.charAt(i), column, row + i));
                 else if (c != word.charAt(i))
+                    return null;
+                String s = Character.toString(word.charAt(i));
+                for(int j=column-1; j>=0 && board[j][row+i]!=null; j--)
+                    s = Character.toString(board[j][row+i]) + s;
+                for(int j=column+1; j<=14 && board[j][row+i]!=null; j++)
+                    s = s + Character.toString(board[j][row+i]);
+                if (s.length()>1 && !tree.contains(s))
                     return null;
             }
         }
@@ -71,16 +85,16 @@ public class Board {
                 if (c == null) tiles.add(new Tile(word.charAt(i), column + i, row));
                 else if (c != word.charAt(i))
                     return null;
+                String s = Character.toString(word.charAt(i));
+                for(int j=row-1; j>=0 && board[column + i][j]!=null; j--)
+                    s = Character.toString(board[column + i][j]) + s;
+                for(int j=row+1; j<=14 && board[column + i][j]!=null; j++)
+                    s = s + Character.toString(board[column + i][j]);
+                if (s.length()>1 && !tree.contains(s))
+                    return null;
             }
         }
-        /* this is obsolete now
-        for (int i = 0; i < word.length(); i++) {
-            board[column][row] = word.charAt(i);
-            if (isVertical) row++;
-            else column++;
-        }
-        */
-        return tiles;
+        return new Pair<>(tiles,5);
     }
 }
 

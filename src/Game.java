@@ -1,3 +1,5 @@
+import javafx.util.Pair;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -6,7 +8,6 @@ public class Game extends Board {
     private Integer currentplayer;
     public Bag bag;
     public final GameWindow gameWindow;
-    public Tree tree = Tree.getInstance();
     public ArrayList<Move> history;
 
     public Game(GameWindow gameWindow, ArrayList<Player> players) throws IOException {
@@ -52,12 +53,10 @@ public class Game extends Board {
     }
     public Boolean currentPlayerMove(String word, int column, int row, boolean isVertical) {
         word = word.toLowerCase();
-        if (!tree.contains(word))
+        Pair<ArrayList<Tile>,Integer> effect = this.placeWord(word, column, row, isVertical);
+        if (effect == null)
             return false;
-        ArrayList<Tile> tiles = this.placeWord(word, column, row, isVertical);
-        if (tiles == null)
-            return false;
-        addmove(new Move(getCurrentplayer(), tiles, 1, word));
+        addmove(new Move(getCurrentplayer(), effect.getKey(), effect.getValue(), word));
         return true;
     }
 

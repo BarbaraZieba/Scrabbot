@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
-public class Player {
+public class Player extends Rack{
     public String name;
     public Integer score;
-    public ArrayList<Character> rack;
 
     public Player(String name) {
+        super();
         this.name = name;
         this.score = 0;
     }
@@ -23,7 +23,5 @@ public class Player {
         return score;
     }
 
-    public Integer countLetters() {return rack.size()};
-
-    public void draw(Bag bag) {}
+    public void draw(Bag bag) {  }
 }
