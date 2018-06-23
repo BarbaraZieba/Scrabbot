@@ -24,6 +24,7 @@ public class RackPanel extends JPanel {
         int y = offset;
         g.setFont(new Font("Arial", Font.BOLD, 16));
         ArrayList<Character> rack = game.getCurrentplayer().getTiles();
+
         if(rack == null)
             return;
         for(Character c : rack){
