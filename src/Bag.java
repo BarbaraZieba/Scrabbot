@@ -11,8 +11,8 @@ public class Bag {
     }
 
     public void loadPolishScrabble() {
-        Character c[] = {'a', 'ą', 'b', 'c', 'ć', 'd', 'e', 'ę', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'ł',
-                'm', 'n', 'ń', 'o', 'ó', 'p', 'r', 's', 'ś', 't', 'u', 'w', 'y', 'z', 'ź', 'ż', ' '};
+        Character c[] = {'A', 'Ą', 'B', 'C', 'Ć', 'D', 'E', 'Ę', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'Ł',
+                'M', 'N', 'Ń', 'O', 'Ó', 'P', 'R', 'S', 'Ś', 'T', 'U', 'W', 'Y', 'Z', 'Ź', 'Ż', ' '};
         int times[] = {9, 1, 2, 3, 1, 3, 7, 1, 1, 2, 2, 8, 2, 3, 3, 2,
                 3, 5, 1, 6, 1, 3, 4, 4, 1, 3, 2, 4, 4, 5, 1, 1, 2};
         for (int i = 0; i < c.length; i++)
@@ -33,5 +33,10 @@ public class Bag {
 
     public int remainingTiles() {
         return tiles.size();
+    }
+
+    public void draw(Bag bag) {
+        while (bag.remainingTiles() > 0 && remainingTiles() < 7)
+            tiles.add(bag.getRandomTile());
     }
 }

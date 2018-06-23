@@ -4,6 +4,7 @@ public class Rack {
     protected ArrayList<Character> tiles;
 
     public Rack() {
+        tiles = new ArrayList<>();
     }
 
     public void add(Character c){ tiles.add(c); }

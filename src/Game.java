@@ -18,6 +18,9 @@ public class Game extends Board {
         this.bag.loadPolishScrabble();
         this.gameWindow = gameWindow;
         this.history = new ArrayList<>();
+
+        for (Player p : players)
+            p.draw(bag);
     }
 
     public Player getCurrentplayer() {

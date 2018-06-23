@@ -56,6 +56,7 @@ public class Tree {
     }
 
     public Boolean contains(String word){
+        word = word.toLowerCase();
         int i = 0;
         Node temp = root;
         while (i<word.length()){

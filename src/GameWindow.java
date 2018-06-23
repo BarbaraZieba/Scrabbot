@@ -55,6 +55,7 @@ public class GameWindow extends JFrame {
         boardSwing.repaint();
         playerPanel.repaint();
         historyPanel.repaint();
+        rackPanel.repaint();
     }
 
     public HistoryPanel getHistoryPanel() {

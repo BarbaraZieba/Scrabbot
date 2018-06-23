@@ -23,5 +23,8 @@ public class Player extends Rack{
         return score;
     }
 
-    public void draw(Bag bag) {  }
+    public void draw(Bag bag) {
+        while(bag.remainingTiles() > 0 && size() < 7)
+            add(bag.getRandomTile());
+    }
 }
