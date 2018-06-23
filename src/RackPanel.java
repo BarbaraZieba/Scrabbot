@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class RackPanel extends JPanel {
-    private class TilePanel extends JPanel {
+    public static class TilePanel extends JPanel {
         Game game;
+        int offset = 10;
+        int size = 32;
 
         public TilePanel(Game game) {
             this.game = game;
-            setPreferredSize(new Dimension(304, 50));
+            setPreferredSize(new Dimension(7*size+8*offset, 50));
         }
 
         @Override
@@ -17,8 +19,6 @@ public class RackPanel extends JPanel {
             super.paintComponent(g);
             g.setColor(new Color(0, 50, 0));
             g.fillRect(0, 0, getWidth(), getHeight());
-            int offset = 10;
-            int size = 30;
             int x = offset;
             int y = offset;
             g.setFont(new Font("Arial", Font.BOLD, 16));
@@ -27,25 +27,22 @@ public class RackPanel extends JPanel {
                 return;
             for (Character c : rack) {
                 g.setColor(new Color(220, 200, 100));
-                g.fillRect(x, y, 32, 32);
+                g.fillRect(x, y, size, size);
                 g.setColor(Color.BLACK);
                 g.drawString(c.toString(), x + 13, y + 21);
-                x += 32 + offset;
+                x += size + offset;
             }
         }
     }
 
-    private Game game;
-
     public RackPanel(Game game) {
         super();
-        this.game = game;
         setLayout(new FlowLayout());
         TilePanel tilePanel = new TilePanel(game);
         add(tilePanel);
         JButton jButton = new JButton("Exchange Tiles");
         add(jButton);
-        jButton.addActionListener(e -> ExchangeDialog.call());
+        jButton.addActionListener(e -> ExchangeDialog.call(this));
         setBackground(new Color(165, 165, 165));
     }
 

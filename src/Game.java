@@ -1,4 +1,5 @@
 import javafx.util.Pair;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -30,9 +31,11 @@ public class Game extends Board {
         System.out.println(move);
         history.add(move);
         gameWindow.getHistoryPanel().getListModel().addElement(move);
-        this.tiles.addAll(move.tiles);
-        for (Tile t : move.tiles) {
-            this.board[t.column][t.row] = t.letter;
+        if (move.tiles != null) {
+            this.tiles.addAll(move.tiles);
+            for (Tile t : move.tiles) {
+                this.board[t.column][t.row] = t.letter;
+            }
         }
         move.player.score += move.score;
         currentplayer = (currentplayer + 1) % players.size();
@@ -40,25 +43,31 @@ public class Game extends Board {
     }
 
     public void deletelastmove() {
-        if(history.size()<=0)
+        if (history.size() <= 0)
             return;
         Move last = history.get(history.size() - 1);
         gameWindow.getHistoryPanel().getListModel().removeElement(last);
         history.remove(history.size() - 1);
-        for (Tile t : last.tiles) {
-            this.board[t.column][t.row] = null;
-            this.tiles.remove(t);
+        if (last.tiles != null) {
+            for (Tile t : last.tiles) {
+                this.board[t.column][t.row] = null;
+                this.tiles.remove(t);
+            }
         }
         last.player.score -= last.score;
-        currentplayer = (currentplayer -1 + players.size()) % players.size();
+        currentplayer = (currentplayer - 1 + players.size()) % players.size();
         gameWindow.repaintChildren();
     }
 
+    public void currentPlayerPass() {
+        addmove(new Move(getCurrentplayer(), null, 0, "-- PASS --"));
+    }
+
     public Boolean currentPlayerMove(String word, int column, int row, boolean isVertical) {
-        Pair<ArrayList<Tile>,Integer> effect = this.placeWord(word, column, row, isVertical);
+        Pair<ArrayList<Tile>, Integer> effect = this.placeWord(word, column, row, isVertical);
         if (effect == null)
             return false;
-        if(!getCurrentplayer().contains(effect.getKey()))
+        if (!getCurrentplayer().contains(effect.getKey()))
             return false;
         addmove(new Move(getCurrentplayer(), effect.getKey(), effect.getValue(), word));
         return true;
