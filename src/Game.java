@@ -53,9 +53,12 @@ public class Game extends Board {
         currentplayer = (currentplayer -1 + players.size()) % players.size();
         gameWindow.repaintChildren();
     }
+
     public Boolean currentPlayerMove(String word, int column, int row, boolean isVertical) {
         Pair<ArrayList<Tile>,Integer> effect = this.placeWord(word, column, row, isVertical);
         if (effect == null)
+            return false;
+        if(!getCurrentplayer().contains(effect.getKey()))
             return false;
         addmove(new Move(getCurrentplayer(), effect.getKey(), effect.getValue(), word));
         return true;

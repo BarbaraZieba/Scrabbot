@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Player extends Rack{
     public String name;
@@ -26,5 +27,6 @@ public class Player extends Rack{
     public void draw(Bag bag) {
         while(bag.remainingTiles() > 0 && size() < 7)
             add(bag.getRandomTile());
+        tiles.sort(Comparator.naturalOrder());
     }
 }
