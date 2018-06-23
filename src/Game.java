@@ -1,5 +1,4 @@
 import javafx.util.Pair;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -55,7 +54,6 @@ public class Game extends Board {
         gameWindow.repaintChildren();
     }
     public Boolean currentPlayerMove(String word, int column, int row, boolean isVertical) {
-        word = word.toLowerCase();
         Pair<ArrayList<Tile>,Integer> effect = this.placeWord(word, column, row, isVertical);
         if (effect == null)
             return false;

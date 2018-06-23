@@ -49,5 +49,4 @@ public class RackPanel extends JPanel {
         setBackground(new Color(165, 165, 165));
     }
 
-
 }
