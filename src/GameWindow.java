@@ -10,6 +10,7 @@ public class GameWindow extends JFrame {
     private BoardSwing boardSwing;
     private PlayerPanel playerPanel;
     private HistoryPanel historyPanel;
+    private RackPanel rackPanel;
     private final int height;
     private final int width;
     private Game game;
@@ -29,6 +30,9 @@ public class GameWindow extends JFrame {
 
         historyPanel = new HistoryPanel(game);
         add(historyPanel, BorderLayout.EAST);
+
+        rackPanel = new RackPanel(game);
+        add(rackPanel, BorderLayout.SOUTH);
 
         setVisible(true);
         setResizable(true);

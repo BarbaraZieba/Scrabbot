@@ -26,8 +26,8 @@ public class CellSwing extends JButton {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        int width = getSize().width;
-        int height = getSize().height;
+        int width = getWidth();
+        int height = getHeight();
         String message = "";
         switch (type) {
             case DoubleWord:
@@ -66,7 +66,6 @@ public class CellSwing extends JButton {
             int offset = 3;
             //g.fillRoundRect(offset, offset, width - 2 * offset, height - 2 * offset, 10*offset, 10*offset);
             g.fillRect(offset, offset, width - 2 * offset, height - 2 * offset);
-
             g.setFont(new Font("Arial", Font.BOLD, width / 2));
             message = c.toString();
             g.setColor(Color.BLACK);
