@@ -38,10 +38,15 @@ public class RackPanel extends JPanel {
     public RackPanel(Game game) {
         super();
         setLayout(new FlowLayout());
+        JButton jButton = new JButton("Pass");
+        jButton.addActionListener(e->game.currentPlayerPass());
+        jButton.setPreferredSize(new Dimension(128,32));
+        add(jButton);
         TilePanel tilePanel = new TilePanel(game);
         add(tilePanel);
-        JButton jButton = new JButton("Exchange Tiles");
+        jButton = new JButton("Exchange Tiles");
         add(jButton);
+        jButton.setPreferredSize(new Dimension(128,32));
         jButton.addActionListener(e -> ExchangeDialog.call(this));
         setBackground(new Color(165, 165, 165));
     }

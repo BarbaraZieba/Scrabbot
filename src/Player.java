@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class Player extends Rack{
+public class Player extends Rack {
     public String name;
     public Integer score;
 
@@ -25,7 +25,7 @@ public class Player extends Rack{
     }
 
     public void draw(Bag bag) {
-        while(bag.remainingTiles() > 0 && size() < 7)
+        while (bag.remainingTiles() > 0 && size() < 7)
             add(bag.getRandomTile());
     }
 }

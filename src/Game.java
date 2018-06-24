@@ -58,14 +58,13 @@ public class Game extends Board {
         last.player.score -= last.score;
         currentplayer = (currentplayer - 1 + players.size()) % players.size();
 
-        if (last.takenTiles == null)
-            return;
-        int count = last.takenTiles.size();
-        for (int i = 0; i < count; i++)
-            bag.addtobag(getCurrentplayer().tiles.remove(getCurrentplayer().tiles.size() - 1), 1);
-        for (Character c : last.takenTiles)
-            getCurrentplayer().add(c);
-
+        if (last.takenTiles != null) {
+            int count = last.takenTiles.size();
+            for (int i = 0; i < count; i++)
+                bag.addtobag(getCurrentplayer().tiles.remove(getCurrentplayer().tiles.size() - 1), 1);
+            for (Character c : last.takenTiles)
+                getCurrentplayer().add(c);
+        }
         gameWindow.repaintChildren();
     }
 

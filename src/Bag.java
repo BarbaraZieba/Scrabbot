@@ -20,23 +20,15 @@ public class Bag {
     }
 
     public void addtobag(Character c, int times) {
-        for (int i = 0; i < times; i++) {
+        for (int i = 0; i < times; i++)
             tiles.add(c);
-        }
     }
 
     public Character getRandomTile() {
-        int r = random.nextInt(remainingTiles());
-        Character tile = tiles.remove(r);
-        return tile;
+        return tiles.remove(random.nextInt(remainingTiles()));
     }
 
     public int remainingTiles() {
         return tiles.size();
-    }
-
-    public void draw(Bag bag) {
-        while (bag.remainingTiles() > 0 && remainingTiles() < 7)
-            tiles.add(bag.getRandomTile());
     }
 }
