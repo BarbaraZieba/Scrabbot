@@ -38,6 +38,7 @@ public class Game extends Board {
             }
         }
         move.player.score += move.score;
+        getCurrentplayer().draw(bag);
         currentplayer = (currentplayer + 1) % players.size();
         gameWindow.repaintChildren();
     }
@@ -56,20 +57,30 @@ public class Game extends Board {
         }
         last.player.score -= last.score;
         currentplayer = (currentplayer - 1 + players.size()) % players.size();
+
+        if (last.takenTiles == null)
+            return;
+        int count = last.takenTiles.size();
+        for (int i = 0; i < count; i++)
+            bag.addtobag(getCurrentplayer().tiles.remove(getCurrentplayer().tiles.size() - 1), 1);
+        for (Character c : last.takenTiles)
+            getCurrentplayer().add(c);
+
         gameWindow.repaintChildren();
     }
 
     public void currentPlayerPass() {
-        addmove(new Move(getCurrentplayer(), null, 0, "-- PASS --"));
+        addmove(new Move(getCurrentplayer(), null, 0, "-- PASS --", null));
     }
 
     public Boolean currentPlayerMove(String word, int column, int row, boolean isVertical) {
         Pair<ArrayList<Tile>, Integer> effect = this.placeWord(word, column, row, isVertical);
         if (effect == null)
             return false;
-        if (!getCurrentplayer().contains(effect.getKey()))
+        ArrayList<Character> taken = getCurrentplayer().takeTiles(effect.getKey());
+        if (taken == null)
             return false;
-        addmove(new Move(getCurrentplayer(), effect.getKey(), effect.getValue(), word));
+        addmove(new Move(getCurrentplayer(), effect.getKey(), effect.getValue(), word, taken));
         return true;
     }
 

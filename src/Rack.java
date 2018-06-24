@@ -13,12 +13,11 @@ public class Rack {
         tiles.add(c);
     }
 
-    public void take(Character c) {
-        for (Character r : tiles)
-            if (r.charValue() == c.charValue()) {
-                tiles.remove(r);
-                return;
-            }
+    public Character take(Character c) {
+        for(int i = 0; i<tiles.size(); i++)
+            if(c.equals(tiles.get(i)))
+                return tiles.remove(i);
+        return null;
     }
 
     public Boolean contains(ArrayList<Tile> word) {
@@ -35,6 +34,21 @@ public class Rack {
                     return false;
             }
         return true;
+    }
+
+    public ArrayList<Character> takeTiles(ArrayList<Tile> word) {
+        ArrayList<Character> taken = new ArrayList<>();
+        for (Tile t : word) {
+            if (contains(t.letter)) {
+                take(t.letter);
+                taken.add(t.letter);
+            } else {
+                for (Character c : taken)
+                    add(c);
+                return null;
+            }
+        }
+        return taken;
     }
 
     public Boolean contains(Character c) {

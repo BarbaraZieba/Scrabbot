@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ExchangeDialog extends JFrame {
     private static ExchangeDialog instance = null;
@@ -24,7 +25,6 @@ public class ExchangeDialog extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (exchanged) {
                     setVisible(false);
-                    game.currentPlayerPass();
                     exchanged = false;
                 } else {
                     String tiles = jTextField.getText().toUpperCase();
@@ -32,58 +32,79 @@ public class ExchangeDialog extends JFrame {
                         JOptionPane.showMessageDialog(new JFrame(),
                                 "There are only " + game.getBag().remainingTiles() + " tiles in the bag.");
                     else {
+                        ArrayList<Tile> toTake = new ArrayList<>();
                         for (char c : tiles.toCharArray())
-                            game.getCurrentplayer().take(c);
+                            toTake.add(new Tile(c, -1, -1));
 
-                        game.getCurrentplayer().draw(game.getBag());
+                        ArrayList<Character> taken = game.getCurrentplayer().takeTiles(toTake);
 
-                        for (char c : tiles.toCharArray())
-                            game.getBag().addtobag(c, 1);
+                        if (taken != null) {
+                            game.addmove(new Move(game.getCurrentplayer(), null, 0, "-- EXCHANGE --", taken));
 
-                        exchanged = true;
-                        jButton.setText("Confirm");
+                            exchanged = true;
+                            jButton.setText("Confirm");
 
-                        game.gameWindow.repaintChildren();
-                        tilePanel.repaint();
+                            game.gameWindow.repaintChildren();
+                            tilePanel.repaint();
+                        } else {
+                            JOptionPane.showMessageDialog(new JFrame(),
+                                    "The tiles you inserted are not in your rack.");
+                        }
                     }
                 }
             }
         };
 
-        jButton = new JButton("Exchange");
+
+        jButton = new
+
+                JButton("Exchange");
         jButton.addActionListener(actionListener);
 
-        jTextField = new JTextField();
+        jTextField = new
+
+                JTextField();
         jTextField.addActionListener(actionListener);
-        jTextField.setPreferredSize(new Dimension(100, 20));
+        jTextField.setPreferredSize(new
+
+                Dimension(100, 20));
 
         JButton cancelButton = new JButton("Cancel");
-        cancelButton.addActionListener(e -> {
+        cancelButton.addActionListener(e ->
+
+        {
             if (exchanged) {
                 JOptionPane.showMessageDialog(new JFrame(),
                         "You cannot cancel after the exchange has been made.");
-                game.currentPlayerPass();
-                exchanged = false;
             }
+            exchanged = false;
             setVisible(false);
         });
 
         setLayout(new FlowLayout());
+
         add(new JLabel("Your current tiles: "));
+
         add(tilePanel);
+
         add(jTextField);
+
         add(jButton);
+
         add(cancelButton);
 
         setSize(350, 200);
+
         setResizable(false);
+
         setDefaultCloseOperation(HIDE_ON_CLOSE);
+
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowDeactivated(WindowEvent e) {
                 super.windowDeactivated(e);
-                if (exchanged)
-                    game.currentPlayerPass();
+                exchanged = false;
+                setVisible(false);
             }
         });
     }

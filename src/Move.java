@@ -5,12 +5,14 @@ public class Move {
     public ArrayList<Tile> tiles;
     public int score;
     public String word;
+    public ArrayList<Character> takenTiles;
 
-    public Move(Player player, ArrayList<Tile> tiles, int score, String word) {
+    public Move(Player player, ArrayList<Tile> tiles, int score, String word, ArrayList<Character> takenTiles) {
         this.player = player;
         this.tiles = tiles;
         this.score = score;
         this.word = word;
+        this.takenTiles = takenTiles;
     }
 
     @Override
