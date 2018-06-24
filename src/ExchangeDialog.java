@@ -56,18 +56,12 @@ public class ExchangeDialog extends JFrame {
         };
 
 
-        jButton = new
-
-                JButton("Exchange");
+        jButton = new JButton("Exchange");
         jButton.addActionListener(actionListener);
 
-        jTextField = new
-
-                JTextField();
+        jTextField = new JTextField();
         jTextField.addActionListener(actionListener);
-        jTextField.setPreferredSize(new
-
-                Dimension(100, 20));
+        jTextField.setPreferredSize(new Dimension(100, 20));
 
         JButton cancelButton = new JButton("Cancel");
         cancelButton.addActionListener(e ->

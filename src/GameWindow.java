@@ -20,6 +20,8 @@ public class GameWindow extends JFrame {
         this.game = new Game(this, players);
         MoveDialog.setGame(game);
         ExchangeDialog.setGame(game);
+        NewLettersDialog.setGame(game);
+        NextPlayerDialog.setGame(game);
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

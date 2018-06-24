@@ -40,8 +40,11 @@ public class MoveDialog extends JFrame {
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (game.currentPlayerMove(jTextField.getText().toUpperCase(), i, j, verticalButton.isSelected()))
+                if (game.currentPlayerMove(jTextField.getText().toUpperCase(), i, j, verticalButton.isSelected())){
                     setVisible(false);
+                    NewLettersDialog.call();
+                }
+
             }
         };
         jTextField.addActionListener(actionListener);
