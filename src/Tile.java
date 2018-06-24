@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -25,5 +26,15 @@ public class Tile {
 
     public static int getValueOf(Character c) {
         return value.get(c);
+    }
+
+    public static void paintTile(Graphics g, Character c, int x, int y) {
+        g.setColor(new Color(220, 200, 100));
+        g.fillRect(x, y, 32, 32);
+        g.setFont(new Font("arial", Font.BOLD, 20));
+        g.setColor(Color.BLACK);
+        g.drawString(c.toString(), x+6,y+20);
+        g.setFont(new Font("arial", Font.BOLD, 10));
+        g.drawString(String.valueOf(getValueOf(c)), x+23, y+26);
     }
 }

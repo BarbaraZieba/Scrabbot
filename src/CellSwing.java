@@ -62,14 +62,7 @@ public class CellSwing extends JButton {
             g.setColor(Color.BLACK);
             g.drawString(message, width / 6, height * 2 / 3);
         } else {
-            g.setColor(new Color(220, 200, 100));
-            int offset = 3;
-            //g.fillRoundRect(offset, offset, width - 2 * offset, height - 2 * offset, 10*offset, 10*offset);
-            g.fillRect(offset, offset, width - 2 * offset, height - 2 * offset);
-            g.setFont(new Font("Arial", Font.BOLD, width / 2));
-            message = c.toString();
-            g.setColor(Color.BLACK);
-            g.drawString(message, width * 3 / 7, height * 2 / 3);
+            Tile.paintTile(g, c, 3,3);
         }
     }
 }

@@ -26,10 +26,7 @@ public class RackPanel extends JPanel {
             if (rack == null)
                 return;
             for (Character c : rack) {
-                g.setColor(new Color(220, 200, 100));
-                g.fillRect(x, y, size, size);
-                g.setColor(Color.BLACK);
-                g.drawString(c.toString(), x + 13, y + 21);
+                Tile.paintTile(g, c, x, y);
                 x += size + offset;
             }
         }
