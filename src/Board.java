@@ -1,9 +1,6 @@
 import javafx.util.Pair;
-
 import java.io.IOException;
 import java.util.ArrayList;
-
-import static java.lang.System.*;
 
 public class Board {
     public Character[][] board;
