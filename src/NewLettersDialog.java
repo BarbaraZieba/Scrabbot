@@ -17,7 +17,8 @@ public class NewLettersDialog extends JFrame {
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                NextPlayerDialog.call(game.gameWindow);
+                //NextPlayerDialog.call(game.gameWindow);
+                setVisible(false);
             }
         };
 
@@ -27,15 +28,16 @@ public class NewLettersDialog extends JFrame {
         add(new JLabel("Your new tiles: "));
         add(tilePanel);
         add(jButton);
-        setSize(350, 200);
+
+        setSize(350,175);
         setResizable(false);
         setDefaultCloseOperation(HIDE_ON_CLOSE);
-
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowDeactivated(WindowEvent e) {
                 super.windowDeactivated(e);
-                NextPlayerDialog.call(game.gameWindow);
+                //NextPlayerDialog.call(game.gameWindow);
+                game.callNextPlayer();
                 setVisible(false);
             }
         });

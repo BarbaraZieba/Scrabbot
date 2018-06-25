@@ -46,16 +46,15 @@ public class MoveDialog extends JFrame {
                         setVisible(false);
                         break;
                     case Game.INVALID_WORD:
-                        JOptionPane.showMessageDialog(new JFrame(), word + " is not in the dictionary.");
+                        JOptionPane.showMessageDialog(instance, word + " is not in the dictionary.", "Error", JOptionPane.ERROR_MESSAGE);
                         break;
                     case Game.MISPLACED_WORD:
-                        JOptionPane.showMessageDialog(new JFrame(), word + " can't be placed here.");
+                        JOptionPane.showMessageDialog(instance, word + " can't be placed here.", "Error", JOptionPane.ERROR_MESSAGE);
                         break;
                     case Game.WRONG_TILES:
-                        JOptionPane.showMessageDialog(new JFrame(), word + " can't be constructed using your tiles.");
+                        JOptionPane.showMessageDialog(instance, word + " can't be constructed using your tiles.", "Error", JOptionPane.ERROR_MESSAGE);
                         break;
                 }
-
             }
         };
         jTextField.addActionListener(actionListener);

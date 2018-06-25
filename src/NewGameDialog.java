@@ -27,10 +27,11 @@ public class NewGameDialog extends JFrame {
                         setVisible(false);
                         dispose();
                     } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(new JFrame(), ex.getMessage());
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Something went wrong.", JOptionPane.ERROR_MESSAGE);
+
                     }
                 } else {
-                    JOptionPane.showMessageDialog(new JFrame(), "There has to be at least 1 player.");
+                    JOptionPane.showMessageDialog(null, "There has to be at least 1 player.", "Need somebody to play this game.", JOptionPane.ERROR_MESSAGE);
                 }
             }
         };
@@ -49,7 +50,7 @@ public class NewGameDialog extends JFrame {
             playerPanel.add(labels[i]);
             playerPanel.add(nameFields[i]);
         }
-        
+
         setLayout(new BorderLayout());
         add(playerPanel, BorderLayout.CENTER);
         add(startButton, BorderLayout.SOUTH);

@@ -1,5 +1,6 @@
 import javafx.util.Pair;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -77,7 +78,8 @@ public class Game extends Board {
         }
         gameWindow.getRackPanel().getTilePanel().setShouldPaintTiles(false);
         gameWindow.repaintChildren();
-        NextPlayerDialog.call(gameWindow);
+        callNextPlayer();
+        //NextPlayerDialog.call(gameWindow);
     }
 
     public void currentPlayerPass() {
@@ -85,7 +87,6 @@ public class Game extends Board {
     }
 
     public int currentPlayerMove(String word, int column, int row, boolean isVertical) {
-
         if (!dictionary.contains(word))
             return INVALID_WORD;
         Pair<ArrayList<Tile>, Integer> effect = this.placeWord(word, column, row, isVertical);
@@ -104,5 +105,11 @@ public class Game extends Board {
 
     public Bag getBag() {
         return bag;
+    }
+
+    public void callNextPlayer() {
+        JOptionPane.showMessageDialog(gameWindow, "It's " + getCurrentplayer().name + "'s turn!", "Get ready " + getCurrentplayer().name + "!", JOptionPane.INFORMATION_MESSAGE);
+        gameWindow.getRackPanel().getTilePanel().setShouldPaintTiles(true);
+        gameWindow.getRackPanel().repaint();
     }
 }

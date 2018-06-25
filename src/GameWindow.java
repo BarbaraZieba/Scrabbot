@@ -52,6 +52,9 @@ public class GameWindow extends JFrame {
 
             }
         });
+
+        rackPanel.getTilePanel().setShouldPaintTiles(false);
+        game.callNextPlayer();
     }
 
     public void repaintChildren() {
