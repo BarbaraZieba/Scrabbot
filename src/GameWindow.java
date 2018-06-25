@@ -37,9 +37,10 @@ public class GameWindow extends JFrame {
         rackPanel = new RackPanel(game);
         add(rackPanel, BorderLayout.SOUTH);
 
-        setVisible(true);
-        setResizable(true);
+        setResizable(false);
         pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
 
         // well at this point that's legacy code
         height = getHeight();

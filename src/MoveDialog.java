@@ -76,6 +76,8 @@ public class MoveDialog extends JFrame {
     }
 
     public static void call(int i, int j, Component caller) {
+        if(instance.game.checkGameOver())
+            return;
         instance.setLocationRelativeTo(caller);
         instance.i = i;
         instance.j = j;

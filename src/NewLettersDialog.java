@@ -9,9 +9,11 @@ public class NewLettersDialog extends JFrame {
     private static NewLettersDialog instance = null;
     private JButton jButton;
     private RackPanel.TilePanel tilePanel;
+    private Game game;
 
     private NewLettersDialog(Game game) throws HeadlessException {
-        super("New tiles");
+        super("Your tiles");
+        this.game = game;
         tilePanel = new RackPanel.TilePanel(game);
 
         ActionListener actionListener = new ActionListener() {
@@ -25,11 +27,11 @@ public class NewLettersDialog extends JFrame {
         jButton = new JButton("Ok");
         jButton.addActionListener(actionListener);
         setLayout(new FlowLayout());
-        add(new JLabel("Your new tiles: "));
+        add(new JLabel("Your tiles are now: "));
         add(tilePanel);
         add(jButton);
 
-        setSize(350,175);
+        setSize(350, 175);
         setResizable(false);
         setDefaultCloseOperation(HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -51,8 +53,9 @@ public class NewLettersDialog extends JFrame {
     }
 
     public static void call(Component caller, Player player) {
+        if (instance.game.checkGameOver())
+            return;
         instance.setLocationRelativeTo(caller);
-        instance.setVisible(true);
         instance.tilePanel.setPlayer(player);
     }
 }

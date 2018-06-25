@@ -13,10 +13,12 @@ public class ExchangeDialog extends JFrame {
     private JButton jButton;
     private boolean exchanged;
     private RackPanel.TilePanel tilePanel;
+    private Game game;
 
     private ExchangeDialog(Game game) throws HeadlessException {
         super("Exchange tiles");
         this.exchanged = false;
+        this.game = game;
 
         tilePanel = new RackPanel.TilePanel(game);
 
@@ -96,6 +98,8 @@ public class ExchangeDialog extends JFrame {
     }
 
     public static void call(Component caller) {
+        if(instance.game.checkGameOver())
+            return;
         if (instance.isVisible())
             return;
         instance.setLocationRelativeTo(caller);

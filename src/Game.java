@@ -14,6 +14,7 @@ public class Game extends Board {
     public static final int INVALID_WORD = 1;
     public static final int MISPLACED_WORD = 2;
     public static final int WRONG_TILES = 3;
+    private boolean gameOver;
 
     public Game(GameWindow gameWindow, ArrayList<Player> players) throws IOException {
         super();
@@ -23,6 +24,7 @@ public class Game extends Board {
         this.bag.loadPolishScrabble();
         this.gameWindow = gameWindow;
         this.history = new ArrayList<>();
+        this.gameOver = false;
 
         for (Player p : players)
             p.draw(bag);
@@ -33,6 +35,8 @@ public class Game extends Board {
     }
 
     public void addmove(Move move) {
+        if (checkGameOver())
+            return;
         System.out.println(move);
         history.add(move);
         gameWindow.getHistoryPanel().getListModel().addElement(move);
@@ -46,15 +50,28 @@ public class Game extends Board {
                 bag.addtobag(c, 1);
             }
         }
-        NewLettersDialog.call(gameWindow, getCurrentplayer());
+        Player previousPlayer = getCurrentplayer();
         move.player.score += move.score;
         getCurrentplayer().draw(bag);
+        if (getCurrentplayer().size() == 0)
+            gameOver = true;
         currentplayer = (currentplayer + 1) % players.size();
         gameWindow.getRackPanel().getTilePanel().setShouldPaintTiles(false);
         gameWindow.repaintChildren();
+        if (move.isPass()) {
+            int i = 1;
+            while (i < history.size() && history.get(history.size() - i - 1).isPass())
+                i++;
+            System.out.println("There were " + i + " passes in a row");
+            if (i >= players.size())
+                gameOver = true;
+        }
+        if (!checkGameOver())
+            NewLettersDialog.call(gameWindow, previousPlayer);
     }
 
     public void deletelastmove() {
+        gameOver = false;
         if (history.size() <= 0)
             return;
         Move last = history.get(history.size() - 1);
@@ -108,8 +125,21 @@ public class Game extends Board {
     }
 
     public void callNextPlayer() {
+        if (gameOver)
+            return;
         JOptionPane.showMessageDialog(gameWindow, "It's " + getCurrentplayer().name + "'s turn!", "Get ready " + getCurrentplayer().name + "!", JOptionPane.INFORMATION_MESSAGE);
         gameWindow.getRackPanel().getTilePanel().setShouldPaintTiles(true);
         gameWindow.getRackPanel().repaint();
+    }
+
+    public Boolean checkGameOver() {
+        if (!gameOver)
+            return false;
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                JOptionPane.showMessageDialog(new JFrame(), "The game is done!");
+            }
+        });
+        return true;
     }
 }

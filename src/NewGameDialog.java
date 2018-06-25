@@ -56,6 +56,7 @@ public class NewGameDialog extends JFrame {
         add(startButton, BorderLayout.SOUTH);
         setSize(250, 150);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setVisible(true);
 
     }

@@ -19,4 +19,8 @@ public class Move {
     public String toString() {
         return player.getName() + "   " + word + " " + score;
     }
+
+    public boolean isPass(){
+        return  word.equals("-- PASS --");
+    }
 }
