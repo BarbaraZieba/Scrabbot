@@ -19,7 +19,6 @@ public class NewLettersDialog extends JFrame {
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //NextPlayerDialog.call(game.gameWindow);
                 setVisible(false);
             }
         };
@@ -38,7 +37,6 @@ public class NewLettersDialog extends JFrame {
             @Override
             public void windowDeactivated(WindowEvent e) {
                 super.windowDeactivated(e);
-                //NextPlayerDialog.call(game.gameWindow);
                 game.callNextPlayer();
                 setVisible(false);
             }
@@ -55,6 +53,7 @@ public class NewLettersDialog extends JFrame {
     public static void call(Component caller, Player player) {
         if (instance.game.checkGameOver())
             return;
+        instance.setVisible(true);
         instance.setLocationRelativeTo(caller);
         instance.tilePanel.setPlayer(player);
     }

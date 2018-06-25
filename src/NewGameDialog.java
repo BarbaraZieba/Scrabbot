@@ -11,7 +11,7 @@ public class NewGameDialog extends JFrame {
         super("Starting a Scrabble Game");
         JTextField[] nameFields = new JTextField[4];
         JLabel[] labels = new JLabel[4];
-
+        setLocationRelativeTo(null);
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

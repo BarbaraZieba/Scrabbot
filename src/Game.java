@@ -66,8 +66,7 @@ public class Game extends Board {
             if (i >= players.size())
                 gameOver = true;
         }
-        if (!checkGameOver())
-            NewLettersDialog.call(gameWindow, previousPlayer);
+        NewLettersDialog.call(gameWindow, previousPlayer);
     }
 
     public void deletelastmove() {

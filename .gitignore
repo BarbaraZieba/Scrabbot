@@ -1,3 +1,7 @@
 *.iml
+*.aux
+*.log
+*.synctex.gz
+*.out
 .idea
 out
