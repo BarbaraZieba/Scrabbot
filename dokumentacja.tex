@@ -35,7 +35,22 @@
 \begin{document}
 \maketitle
 \section{Wstęp}
-Jako projekt napisaliśmy program umożliwiający przeprowadzenie rozgrywki w Scrabble na komputerze. 
+Jako projekt wieńczący kurs Programowania obiektowego napisaliśmy
+program umożliwiający przeprowadzenie rozgrywki w Scrabble na
+komputerze.
+\section{Instrukcja dla użytkownika}
+\subsection{Początek gry}
+Po uruchomieniu programu użytkownik proszony jest o podanie imion graczy. Gracze będą prowadzili rozgrywkę w podanej kolejności zaczynając od podanego jako pierwszy. Można podać imiona od jednego do czterech graczy, i to własnie ta liczba rozpocznie rozgrywkę.
+\subsection{Ruch gracza}
+Gracz musi w swoim ruchu wykonać jedną z następujących akcji:
+\begin{enumerate}
+\item[] \textbf{Położenie słowa.} Aby położyć słowo gracz powinieć kliknąć kratkę planszy, w której będzie się znajdować pierwsza litera danego słowa. Uwaga: Może to być litera już znajdująca się na planszy.
+W nowym okienku należy wpisać jakie to będzie słowo (również litery już znajdujące się na planszy) i zaznaczyć czy ma zostać położone pionowo czy poziomo. Wszystkie tworzone przy ruchu słowa muszą być poprawne, a dokładane litery łączyć się z już ułożonymi. Jeśli ruch będzie poprawny odpowiednie litery gracza pojawią się na planszy, a on otrzyma nowe.
+\item[] \textbf{Wymiana liter} ef
+\item[] \textbf{Pass} ert
+\end{enumerate}
+Po kliknięciu Ok na komunikat "Kolej następnego gracza." pokażą się liery na ręku kolejnego gracza.
+\subsection{Koniec gry}
 \section{Analiza obiektowa}
 \subsection{Zaimplementowane klasy}
 \begin{enumerate}
@@ -43,5 +58,7 @@ Jako projekt napisaliśmy program umożliwiający przeprowadzenie rozgrywki w Sc
 \end{enumerate}
 \subsection{Diagram UML}
 Diagram wygenerowany za pomocą InteliJ IDEA.
-\section{Instrukcja dla użytkownika}
+\subsection{Realizowana funkcjonalność}
+\section{Wskazówki dla programistów}
+Projekt jest otwarty na dalszą pracę nad nim. Jedną z opcji jego prostego rozbudowania jest umożliwienie gry w innych językach lub na innych zasadach.
 \end{document}
