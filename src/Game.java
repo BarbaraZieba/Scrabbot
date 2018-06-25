@@ -40,6 +40,10 @@ public class Game extends Board {
             for (Tile t : move.tiles) {
                 this.board[t.column][t.row] = t.letter;
             }
+        } else if (move.takenTiles != null) {
+            for (Character c : move.takenTiles) {
+                bag.addtobag(c, 1);
+            }
         }
         NewLettersDialog.call(gameWindow, getCurrentplayer());
         move.player.score += move.score;

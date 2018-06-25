@@ -43,7 +43,7 @@ public class PlayerPanel extends JPanel {
         bagLabel = new JLabel();
         bagLabel.setForeground(new Color(220, 200, 100));
         add(bagLabel);
-        
+
         setBackground(new Color(0, 50, 0));
         setPreferredSize(new Dimension(150, 600));
     }
@@ -51,6 +51,6 @@ public class PlayerPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        bagLabel.setText(game.bag.remainingTiles() + " tiles remain in the bag.");
+        bagLabel.setText(bag.remainingTiles() + " tiles remain in the bag.");
     }
 }
