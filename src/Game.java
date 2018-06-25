@@ -45,6 +45,8 @@ public class Game extends Board {
             for (Tile t : move.tiles) {
                 this.board[t.column][t.row] = t.letter;
             }
+            if (move.takenTiles != null && move.takenTiles.size() == 7)
+                move.player.score += 50;
         } else if (move.takenTiles != null) {
             for (Character c : move.takenTiles) {
                 bag.addtobag(c, 1);
@@ -134,11 +136,8 @@ public class Game extends Board {
     public Boolean checkGameOver() {
         if (!gameOver)
             return false;
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                JOptionPane.showMessageDialog(new JFrame(), "The game is done!");
-            }
-        });
+        EndGameDialog.call(this);
+        gameWindow.getRackPanel().getTilePanel().setShouldPaintTiles(true);
         return true;
     }
 }

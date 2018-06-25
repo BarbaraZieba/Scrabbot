@@ -56,5 +56,6 @@ public class NewLettersDialog extends JFrame {
         instance.setVisible(true);
         instance.setLocationRelativeTo(caller);
         instance.tilePanel.setPlayer(player);
+        instance.jButton.requestFocus();
     }
 }
