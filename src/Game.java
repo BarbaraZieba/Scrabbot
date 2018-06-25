@@ -9,6 +9,10 @@ public class Game extends Board {
     public Bag bag;
     public final GameWindow gameWindow;
     public ArrayList<Move> history;
+    public static final int SUCCESS = 0;
+    public static final int INVALID_WORD = 1;
+    public static final int MISPLACED_WORD = 2;
+    public static final int WRONG_TILES = 3;
 
     public Game(GameWindow gameWindow, ArrayList<Player> players) throws IOException {
         super();
@@ -76,15 +80,18 @@ public class Game extends Board {
         addmove(new Move(getCurrentplayer(), null, 0, "-- PASS --", null));
     }
 
-    public Boolean currentPlayerMove(String word, int column, int row, boolean isVertical) {
+    public int currentPlayerMove(String word, int column, int row, boolean isVertical) {
+
+        if (!dictionary.contains(word))
+            return INVALID_WORD;
         Pair<ArrayList<Tile>, Integer> effect = this.placeWord(word, column, row, isVertical);
         if (effect == null)
-            return false;
+            return MISPLACED_WORD;
         ArrayList<Character> taken = getCurrentplayer().takeTiles(effect.getKey());
         if (taken == null)
-            return false;
+            return WRONG_TILES;
         addmove(new Move(getCurrentplayer(), effect.getKey(), effect.getValue(), word, taken));
-        return true;
+        return SUCCESS;
     }
 
     public ArrayList<Player> getPlayers() {

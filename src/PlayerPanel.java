@@ -31,11 +31,26 @@ public class PlayerPanel extends JPanel {
         }
     }
 
+    Bag bag;
+    JLabel bagLabel;
+
     public PlayerPanel(Game game) {
         setLayout(new FlowLayout());
-        for (Player player :  game.getPlayers())
+        for (Player player : game.getPlayers())
             add(new PlayerRenderer(game, player));
+
+        this.bag = game.getBag();
+        bagLabel = new JLabel();
+        bagLabel.setForeground(new Color(220, 200, 100));
+        add(bagLabel);
+        
         setBackground(new Color(0, 50, 0));
         setPreferredSize(new Dimension(150, 600));
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        bagLabel.setText(game.bag.remainingTiles() + " tiles remain in the bag.");
     }
 }

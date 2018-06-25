@@ -40,8 +40,20 @@ public class MoveDialog extends JFrame {
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (game.currentPlayerMove(jTextField.getText().toUpperCase(), i, j, verticalButton.isSelected())){
-                    setVisible(false);
+                String word = jTextField.getText().toUpperCase();
+                switch (game.currentPlayerMove(word, i, j, verticalButton.isSelected())) {
+                    case Game.SUCCESS:
+                        setVisible(false);
+                        break;
+                    case Game.INVALID_WORD:
+                        JOptionPane.showMessageDialog(new JFrame(), word + " is not in the dictionary.");
+                        break;
+                    case Game.MISPLACED_WORD:
+                        JOptionPane.showMessageDialog(new JFrame(), word + " can't be placed here.");
+                        break;
+                    case Game.WRONG_TILES:
+                        JOptionPane.showMessageDialog(new JFrame(), word + " can't be constructed using your tiles.");
+                        break;
                 }
 
             }

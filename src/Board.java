@@ -10,7 +10,7 @@ public class Board {
     public ArrayList<Tile> tiles;
     public ArrayList<Bonus> bonuses;
     public Bonus.Type[][] bonusboard;
-    public Tree tree;
+    public Tree dictionary;
 
 
     public Board() throws IOException {
@@ -18,7 +18,7 @@ public class Board {
         tiles = new ArrayList<Tile>();
         bonusboard = new Bonus.Type[15][15];
         bonuses = new ArrayList<Bonus>();
-        tree = Tree.getInstance();
+        dictionary = Tree.getInstance();
 
         for (int i = 0; i < 15; i++)
             for (int j = 0; j < 15; j++)
@@ -66,12 +66,10 @@ public class Board {
         ArrayList<Tile> tiles = new ArrayList<>();
         boolean isTouching = false;
         Integer score = 0;
-        if (!tree.contains(word))
-            return null;
         if (isVertical) {
             if (row + word.length() > 15) return null;
-            if (row-1 >= 0 && board[column][row-1] != null) return null;
-            if (row+word.length()+1 < 14 && board[column][row+word.length()+1] != null) return null;
+            if (row - 1 >= 0 && board[column][row - 1] != null) return null;
+            if (row + word.length() + 1 < 14 && board[column][row + word.length() + 1] != null) return null;
             for (int i = 0; i < word.length(); i++) {
                 Character c = board[column][row + i];
                 if (c == null) tiles.add(new Tile(word.charAt(i), column, row + i));
@@ -83,7 +81,7 @@ public class Board {
                 if (c == null) {
                     String s = Character.toString(word.charAt(i));
                     int prefix = 0;
-                    for (int j = column - 1; j >= 0 && board[j][row + i] != null; j--){
+                    for (int j = column - 1; j >= 0 && board[j][row + i] != null; j--) {
                         s = Character.toString(board[j][row + i]) + s;
                         prefix++;
                     }
@@ -91,22 +89,22 @@ public class Board {
                         s = s + Character.toString(board[j][row + i]);
                     if (s.length() > 1) {
                         isTouching = true;
-                        if(!tree.contains(s))
+                        if (!dictionary.contains(s))
                             return null;
-                        score += value(s,column-prefix,row+i,false);
+                        score += value(s, column - prefix, row + i, false);
                     }
                 }
             }
-            if(column == 7 && row<=7 && row+word.length()>=7 ) isTouching = true;
+            if (column == 7 && row <= 7 && row + word.length() >= 7) isTouching = true;
         }
         if (!isVertical) {
             if (column + word.length() > 15) return null;
-            if (column-1 >= 0 && board[column-1][row] != null) return null;
-            if (column+word.length()+1 < 14 && board[column+word.length()+1][row] != null) return null;
+            if (column - 1 >= 0 && board[column - 1][row] != null) return null;
+            if (column + word.length() + 1 < 14 && board[column + word.length() + 1][row] != null) return null;
             for (int i = 0; i < word.length(); i++) {
                 Character c = board[column + i][row];
                 if (c == null) tiles.add(new Tile(word.charAt(i), column + i, row));
-                else{
+                else {
                     isTouching = true;
                     if (c != word.charAt(i))
                         return null;
@@ -122,18 +120,18 @@ public class Board {
                         s = s + Character.toString(board[column + i][j]);
                     if (s.length() > 1) {
                         isTouching = true;
-                        if(!tree.contains(s))
+                        if (!dictionary.contains(s))
                             return null;
-                        score += value(s,column+i,row-prefix,true);
+                        score += value(s, column + i, row - prefix, true);
                     }
                 }
             }
-            if(row == 7 && column<=7 && column+word.length()>=7 ) isTouching = true;
+            if (row == 7 && column <= 7 && column + word.length() >= 7) isTouching = true;
         }
-        if(!isTouching){
+        if (!isTouching) {
             return null;
         }
-        score += value(word,column,row,isVertical);
+        score += value(word, column, row, isVertical);
         return new Pair<>(tiles, score);
     }
 
@@ -161,11 +159,10 @@ public class Board {
                             break;
                     }
                 }
-                value += Tile.getValueOf(word.charAt(i))*letterbonus;
+                value += Tile.getValueOf(word.charAt(i)) * letterbonus;
                 letterbonus = 1;
             }
-        }
-        else{
+        } else {
             for (int i = 0; i < word.length(); i++) {
                 Character c = board[column + i][row];
                 if (c == null) {
@@ -185,7 +182,7 @@ public class Board {
                             break;
                     }
                 }
-                value += Tile.getValueOf(word.charAt(i))*letterbonus;
+                value += Tile.getValueOf(word.charAt(i)) * letterbonus;
                 letterbonus = 1;
             }
         }

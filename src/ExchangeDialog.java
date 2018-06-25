@@ -37,10 +37,8 @@ public class ExchangeDialog extends JFrame {
                             toTake.add(new Tile(c, -1, -1));
 
                         ArrayList<Character> taken = game.getCurrentplayer().takeTiles(toTake);
-
                         if (taken != null) {
                             game.addmove(new Move(game.getCurrentplayer(), null, 0, "-- EXCHANGE --", taken));
-
                             exchanged = true;
                             jButton.setText("Confirm");
 
@@ -55,7 +53,6 @@ public class ExchangeDialog extends JFrame {
             }
         };
 
-
         jButton = new JButton("Exchange");
         jButton.addActionListener(actionListener);
 
@@ -64,35 +61,23 @@ public class ExchangeDialog extends JFrame {
         jTextField.setPreferredSize(new Dimension(100, 20));
 
         JButton cancelButton = new JButton("Cancel");
-        cancelButton.addActionListener(e ->
-
-        {
-            if (exchanged) {
-                JOptionPane.showMessageDialog(new JFrame(),
-                        "You cannot cancel after the exchange has been made.");
-            }
+        cancelButton.addActionListener(e -> {
+            if (exchanged)
+                JOptionPane.showMessageDialog(new JFrame(), "You can't cancel the exchange now.");
             exchanged = false;
             setVisible(false);
         });
 
         setLayout(new FlowLayout());
-
         add(new JLabel("Your current tiles: "));
-
         add(tilePanel);
-
         add(jTextField);
-
         add(jButton);
-
         add(cancelButton);
 
         setSize(350, 200);
-
         setResizable(false);
-
         setDefaultCloseOperation(HIDE_ON_CLOSE);
-
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowDeactivated(WindowEvent e) {
