@@ -8,20 +8,28 @@ import java.awt.event.WindowEvent;
 public class NextPlayerDialog extends JFrame {
     private static NextPlayerDialog instance = null;
     private JButton jButton;
+    private JLabel jLabel;
+    private Game game;
 
     private NextPlayerDialog(Game game) throws HeadlessException {
         super("Next player");
+        this.game = game;
+
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
+                game.gameWindow.getRackPanel().getTilePanel().setShouldPaintTiles(true);
+                game.gameWindow.getRackPanel().repaint();
             }
         };
 
+        jLabel = new JLabel();
         jButton = new JButton("Ok");
         jButton.addActionListener(actionListener);
+
         setLayout(new FlowLayout());
-        add(new JLabel("It's " + game.getCurrentplayer().name +"'s turn!"));
+        add(jLabel);
         add(jButton);
         setSize(350, 100);
         setResizable(false);
@@ -32,6 +40,8 @@ public class NextPlayerDialog extends JFrame {
             public void windowDeactivated(WindowEvent e) {
                 super.windowDeactivated(e);
                 setVisible(false);
+                game.gameWindow.getRackPanel().getTilePanel().setShouldPaintTiles(true);
+                game.gameWindow.getRackPanel().repaint();
             }
         });
     }
@@ -43,7 +53,9 @@ public class NextPlayerDialog extends JFrame {
         instance = new NextPlayerDialog(game);
     }
 
-    public static void call() {
+    public static void call(Component caller) {
+        instance.setLocationRelativeTo(caller);
         instance.setVisible(true);
+        instance.jLabel.setText("It's " + instance.game.getCurrentplayer().name + "'s turn!");
     }
 }

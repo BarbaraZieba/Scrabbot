@@ -42,7 +42,6 @@ public class MoveDialog extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (game.currentPlayerMove(jTextField.getText().toUpperCase(), i, j, verticalButton.isSelected())){
                     setVisible(false);
-                    NewLettersDialog.call();
                 }
 
             }

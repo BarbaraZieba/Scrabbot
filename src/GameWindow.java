@@ -64,4 +64,8 @@ public class GameWindow extends JFrame {
     public HistoryPanel getHistoryPanel() {
         return historyPanel;
     }
+
+    public RackPanel getRackPanel() {
+        return rackPanel;
+    }
 }

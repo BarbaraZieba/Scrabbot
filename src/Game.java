@@ -37,9 +37,11 @@ public class Game extends Board {
                 this.board[t.column][t.row] = t.letter;
             }
         }
+        NewLettersDialog.call(gameWindow, getCurrentplayer());
         move.player.score += move.score;
         getCurrentplayer().draw(bag);
         currentplayer = (currentplayer + 1) % players.size();
+        gameWindow.getRackPanel().getTilePanel().setShouldPaintTiles(false);
         gameWindow.repaintChildren();
     }
 
@@ -65,7 +67,9 @@ public class Game extends Board {
             for (Character c : last.takenTiles)
                 getCurrentplayer().add(c);
         }
+        gameWindow.getRackPanel().getTilePanel().setShouldPaintTiles(false);
         gameWindow.repaintChildren();
+        NextPlayerDialog.call(gameWindow);
     }
 
     public void currentPlayerPass() {
