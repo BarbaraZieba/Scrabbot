@@ -1,5 +1,4 @@
 import javafx.util.Pair;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Board {
@@ -8,12 +7,11 @@ public class Board {
     protected Bonus.Type[][] bonusboard;
     protected Tree dictionary;
 
-
-    public Board() throws IOException {
+    public Board() {
         board = new Character[15][15];
         tiles = new ArrayList<Tile>();
         bonusboard = new Bonus.Type[15][15];
-        dictionary = Tree.getInstance();
+        dictionary = Tree.loadPolishScrabble();
 
         for (int i = 0; i < 15; i++)
             for (int j = 0; j < 15; j++)
@@ -175,6 +173,10 @@ public class Board {
         }
         value *= wordbonus;
         return value;
+    }
+
+    public Bonus.Type getBonusAt(int column, int row) {
+        return bonusboard[column][row];
     }
 }
 

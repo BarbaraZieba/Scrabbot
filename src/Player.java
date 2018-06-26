@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-
 public class Player extends Rack {
-    public String name;
-    public Integer score;
+    private String name;
+    private Integer score;
 
     public Player(String name) {
         super();
@@ -22,6 +19,10 @@ public class Player extends Rack {
 
     public Integer getScore() {
         return score;
+    }
+
+    public void addToScore(int score){
+        this.score = Math.min(0,this.score-score);
     }
 
     public void draw(Bag bag) {

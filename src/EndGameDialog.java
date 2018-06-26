@@ -1,9 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Arrays;
-import java.util.Comparator;
 
 public class EndGameDialog extends JFrame {
     static EndGameDialog instance;
@@ -51,10 +48,10 @@ public class EndGameDialog extends JFrame {
         Player[] players = new Player[game.getPlayers().size()];
         for (int i = 0; i < players.length; i++)
             players[i] = game.getPlayers().get(i);
-        Arrays.sort(players, (o1, o2) -> o2.score.compareTo(o1.score));
+        Arrays.sort(players, (o1, o2) -> o2.getScore().compareTo(o1.getScore()));
         for (int i = 0; i < players.length; i++)
             instance.playerLabels[i].setText(players[i].toString());
-        instance.winnerLabel.setText("Congratulations " + players[0].name + ", you won the game!");
+        instance.winnerLabel.setText("Congratulations " + players[0].getName() + ", you won the game!");
         instance.setVisible(true);
     }
 }

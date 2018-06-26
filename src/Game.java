@@ -1,22 +1,22 @@
 import javafx.util.Pair;
 
 import javax.swing.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Game extends Board {
     private ArrayList<Player> players;
     private Integer currentplayer;
-    public Bag bag;
-    public final GameWindow gameWindow;
-    public ArrayList<Move> history;
+    private Bag bag;
+    private GameWindow gameWindow;
+    private ArrayList<Move> history;
+    private boolean gameOver;
+
     public static final int SUCCESS = 0;
     public static final int INVALID_WORD = 1;
     public static final int MISPLACED_WORD = 2;
     public static final int WRONG_TILES = 3;
-    private boolean gameOver;
 
-    public Game(GameWindow gameWindow, ArrayList<Player> players) throws IOException {
+    public Game(GameWindow gameWindow, ArrayList<Player> players) {
         super();
         this.currentplayer = 0;
         this.players = players;
@@ -46,14 +46,14 @@ public class Game extends Board {
                 this.board[t.column][t.row] = t.letter;
             }
             if (move.takenTiles != null && move.takenTiles.size() == 7)
-                move.player.score += 50;
+                move.player.addToScore(50);
         } else if (move.takenTiles != null) {
             for (Character c : move.takenTiles) {
                 bag.addtobag(c, 1);
             }
         }
         Player previousPlayer = getCurrentplayer();
-        move.player.score += move.score;
+        move.player.addToScore(move.score);
         getCurrentplayer().draw(bag);
         if (getCurrentplayer().size() == 0)
             gameOver = true;
@@ -84,7 +84,7 @@ public class Game extends Board {
                 this.tiles.remove(t);
             }
         }
-        last.player.score -= last.score;
+        last.player.addToScore(-last.score);
         currentplayer = (currentplayer - 1 + players.size()) % players.size();
 
         if (last.takenTiles != null) {
@@ -97,7 +97,6 @@ public class Game extends Board {
         gameWindow.getRackPanel().getTilePanel().setShouldPaintTiles(false);
         gameWindow.repaintChildren();
         callNextPlayer();
-        //NextPlayerDialog.call(gameWindow);
     }
 
     public void currentPlayerPass() {
@@ -125,10 +124,14 @@ public class Game extends Board {
         return bag;
     }
 
+    public GameWindow getGameWindow() {
+        return gameWindow;
+    }
+
     public void callNextPlayer() {
         if (gameOver)
             return;
-        JOptionPane.showMessageDialog(gameWindow, "It's " + getCurrentplayer().name + "'s turn!", "Get ready " + getCurrentplayer().name + "!", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(gameWindow, "It's " + getCurrentplayer().getName() + "'s turn!", "Get ready " + getCurrentplayer().getName() + "!", JOptionPane.INFORMATION_MESSAGE);
         gameWindow.getRackPanel().getTilePanel().setShouldPaintTiles(true);
         gameWindow.getRackPanel().repaint();
     }

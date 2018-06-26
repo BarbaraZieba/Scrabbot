@@ -3,11 +3,11 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class TilePanel extends JPanel {
-    Game game;
-    int offset = 10;
-    int size = 32;
-    Player player;
-    boolean shouldPaintTiles;
+    private Game game;
+    private final int offset = 10;
+    private final int size = 32;
+    private Player player;
+    private boolean shouldPaintTiles;
 
 
     public TilePanel(Game game) {
@@ -34,16 +34,12 @@ public class TilePanel extends JPanel {
             int x = offset;
             int y = offset;
             g.setFont(new Font("Arial", Font.BOLD, 16));
-            ArrayList<Character> rack;
-            if (player == null)
-                rack = game.getCurrentplayer().getTiles();
-            else rack = player.getTiles();
-            if (rack == null)
-                return;
-            for (Character c : rack) {
-                Tile.paintTile(g, c, x, y);
-                x += size + offset;
-            }
+            ArrayList<Character> rack = player == null ? game.getCurrentplayer().getTiles() : player.getTiles();
+            if (rack != null)
+                for (Character c : rack) {
+                    Tile.paintTile(g, c, x, y);
+                    x += size + offset;
+                }
         }
     }
 }
