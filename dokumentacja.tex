@@ -74,9 +74,13 @@ Program kopiuje zasady gry Scrabble.
 Aby poznać reguły liczenia punktów i inne szczegóły gry, można zajrzeć na stronę \url{http://www.scrabble.info.pl/pobierz/zasady.pdf}.
 Nasz program korzysta ze słownika wyrazów dopuszczalnych w grach dostępnego na stronie Słownika Języka Polskiego \url{https://sjp.pl/slownik/growy/}.
 \section{Analiza obiektowa}
+
 \subsection{Zaimplementowane klasy}
+
 \subsubsection{Logika gry}
+
 \paragraph{Board} Jedna z głownych klas programu. Przechowuje informacje o stanie planszy: położonych literach, specjalnych polach i słowniku, który decyduje, które wyrazy są poprawne. Posiada dwie metody. Pierwsza, \texttt{placeWord} przyjmuje słowo, które chcemy położyć na planszy i jego pozycję. Jeśli jest to poprawny ruch zwraca parę listę płytek użytych przez gracza i liczbę punktów zdobytych za tej ruch. Kolejna, \texttt{value} służy do liczenia punktów zdobytych za ułożenie danego słowa.
+
 \paragraph{Game} Najważniejsza klasa informująca o przebiegu gry. Dziedziczy z klasy \texttt{Board}, a oprócz tego przechowuje listę graczy, listę ruchów (historię) i woreczek dostępnych literek.
 \paragraph{Rack} Po angielsku oznacza stojak na literki. Zawiera listę płytek i udostępnia metody, które pozwalają na aktualizację tej listy.
 \paragraph{Player} Klasa dziedzicząca po \texttt{Rack} i odpowiadająca za informacje na temat gracza. Zawiera jego imię i bieżącą liczbę punktów.
@@ -88,46 +92,17 @@ Nasz program korzysta ze słownika wyrazów dopuszczalnych w grach dostępnego n
 Drzewo wyrazów dopuszczonych do użytku w grze. Zostaje utworzone za pomocą pliku txt upublicznionego przez stronę www.sjp.pl. Zawiera wewnętrzną klasę \texttt{Node}. 
 \paragraph{Main}
 Klasa, która uruchamia program.
+
+\newpage
 \subsubsection{Klasy rozszerzające Swing}
-\paragraph{Okienka}
+\paragraph{Główne okno gry}
 \paragraph{\texttt{GameWindow}} Główne okno gry, zarządza komunikacją gracz-komputer.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.5\textwidth]{1.png}
+\includegraphics[width=0.7\textwidth]{1.png}
 \caption{Główne okno gry}
 \end{figure}
-
-\paragraph{Okienka typu \textit{pop-up}}
-\paragraph{\texttt{EndGameDialog}} Informuje, że gra się zakończyła. Wyświetla tabelę wyników graczy.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.5\textwidth]{3.png}
-\caption{Okienko zakończenia gry}
-\end{figure}
-
-\paragraph{\texttt{ExchangeDialog}} Wyświetla się, gdy gracz, naciśnie przycisk \texttt{Exchange}. Pozwala wymienić literki na stojaczku (kosztuje to jedną turę).
-Jeżeli literki które gracz chce wymienić nie zgadzają się z jego stojakiem, pojawia się komunikat o błędzie.
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=0.5\textwidth]{2.png}
-\caption{Okienko wymiany liter}
-\end{figure}
-
-\paragraph{\texttt{MoveDialog}} Jest wyświetlany po kliknęciu wybranego pola. W okienku gracz wpisuje wybrane słowo.
-Jeśli jest poprawne --- okienko znika, jeśli nie --- pojawia się komunikat o błędzie.
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=0.5\textwidth]{4.png}
-\caption{Okienko nowego ruchu}
-\end{figure}
-
-\paragraph{\texttt{NewGameDialog}} Pierwsze okienko, które widzi gracz.
-Pozwala wprowadzić do czterech graczy, którzy potem prowadzą rozgrywkę w \texttt{GameWindow}.
-\paragraph{\texttt{NewLettersDialog}} Pojawia się zawsze na koniec tury. Informuje gracza o stanie jego stojaczka.
 \paragraph{Panele}
 \paragraph{\texttt{BoardPanel}} Zajmuje centralną część okna gry. Zawiera pola-przyciski typu \texttt{CellButton}, których przyciśnięcie wywołuje \texttt{MoveDialog}.
 \paragraph{\texttt{HistoryPanel}} Znajduje się po prawej stronie okna gry. Informuje o historii gry poprzez wypisywanie kolejnych ruchów.
@@ -136,8 +111,55 @@ Pozwala wprowadzić do czterech graczy, którzy potem prowadzą rozgrywkę w \te
 \paragraph{\texttt{TilePanel}} Wyświetla stojaczek wybranego gracza.
 \paragraph{Przyciski}
 \paragraph{\texttt{CellButton}} Wyświetla pojedyncze pole na planszy gry.
+
+\newpage
+\paragraph{Okienka typu \textit{pop-up}}
+\paragraph{\texttt{EndGameDialog}} Informuje, że gra się zakończyła. Wyświetla tabelę wyników graczy.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.3\textwidth]{3.png}
+\caption{Okienko zakończenia gry}
+\end{figure}
+
+\paragraph{\texttt{ExchangeDialog}} Wyświetla się, gdy gracz, naciśnie przycisk \texttt{Exchange}. Pozwala wymienić literki na stojaczku (kosztuje to jedną turę).
+Jeżeli literki które gracz chce wymienić nie zgadzają się z jego stojakiem, pojawia się komunikat o błędzie.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.3\textwidth]{2.png}
+\caption{Okienko wymiany liter}
+\end{figure}
+
+\paragraph{\texttt{MoveDialog}} Jest wyświetlany po kliknęciu wybranego pola. W okienku gracz wpisuje wybrane słowo.
+Jeśli jest poprawne --- okienko znika, jeśli nie --- pojawia się komunikat o błędzie.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.3\textwidth]{4.png}
+\caption{Okienko nowego ruchu}
+\end{figure}
+
+\paragraph{\texttt{NewGameDialog}} Pierwsze okienko, które widzi gracz.
+Pozwala wprowadzić do czterech graczy, którzy potem prowadzą rozgrywkę w \texttt{GameWindow}.
+\paragraph{\texttt{NewLettersDialog}} Pojawia się zawsze na koniec tury. Informuje gracza o stanie jego stojaczka.
+
+\newpage
 \subsection{Diagram UML klas}
 Diagramy wygenerowane za pomocą InteliJ IDEA.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{logika.png}
+\caption{Logika gry}
+\end{figure}
+
+\begin{figure}[!hb]
+\centering
+\includegraphics[width=\textwidth]{swing.png}
+\caption{Wyświetlanie gry}
+\end{figure}
+
 \section{Wskazówki dla programistów}
 Projekt jest otwarty na dalszą pracę nad nim. Jedną z opcji jego prostego rozbudowania jest umożliwienie gry w innych językach lub na innych zasadach. Można również pokusić się o dodanie możliwości zmierzenia się w grze z komputerem.
 \end{document}
