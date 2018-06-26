@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -11,20 +9,13 @@ public class NewLettersDialog extends JFrame {
     private TilePanel tilePanel;
     private Game game;
 
-    private NewLettersDialog(Game game) throws HeadlessException {
+    private NewLettersDialog(Game game) {
         super("Your tiles");
         this.game = game;
         tilePanel = new TilePanel(game);
 
-        ActionListener actionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-            }
-        };
-
         jButton = new JButton("Ok");
-        jButton.addActionListener(actionListener);
+        jButton.addActionListener(e -> setVisible(false));
         setLayout(new FlowLayout());
         add(new JLabel("Your tiles are now: "));
         add(tilePanel);
