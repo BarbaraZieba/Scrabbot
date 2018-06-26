@@ -38,9 +38,13 @@
 Jako projekt wieńczący kurs Programowania obiektowego napisaliśmy
 program umożliwiający przeprowadzenie rozgrywki w Scrabble na
 komputerze.
+Gra została napisana w języku \texttt{Java}.
+Grafika gry powstała na bazie standardowych bibliotek okienkowych \texttt{AWT} i \texttt{Swing}.
 \section{Instrukcja dla użytkownika}
 \subsection{Początek gry}
-Po uruchomieniu programu użytkownik proszony jest o podanie imion graczy. Gracze będą prowadzili rozgrywkę w podanej kolejności zaczynając od podanego jako pierwszy. Można podać imiona od jednego do czterech graczy, i to własnie ta liczba rozpocznie rozgrywkę.
+Po uruchomieniu programu użytkownik proszony jest o podanie imion graczy.
+Gracze będą prowadzili rozgrywkę w podanej kolejności zaczynając od podanego jako pierwszy.
+Można podać imiona od jednego do czterech graczy, i to własnie tylu graczy rozpocznie rozgrywkę.
 \subsection{Ruch gracza}
 Gracz musi w swoim ruchu wykonać jedną z następujących akcji:
 \begin{enumerate}
@@ -64,7 +68,7 @@ Należy przekazać mu komputer i kliknąć \textit{OK}.
 \subsection{Koniec gry}
 Gra kończy się, gdy wszyscy gracze z rzędu spasują, lub jeden z graczy wykorzysta wszystkie swoje płytki, a woreczek z płytkami będzie pusty.
 Zwycięzcą zostaje gracz o najwyższej liczbie punktów.
-Pojawia się okienko \texttt{EndGameDialog}.
+Gdy gra kończy się, pojawia się okienko \texttt{EndGameDialog}.
 \subsection{Cofanie ruchu}
 Gracze sami powinni zdecydować, jak chcą korzystać z tej opcji.
 Sugerujemy, żeby w razie pomyłki we wpisywaniu użytkownik mógł zgłosić (niezwłocznie), że chce cofnąć ostatni ruch.
@@ -73,6 +77,7 @@ Wtedy następny gracz powinieć skorzystać z przycisku \textit{Revert last move
 Program kopiuje zasady gry Scrabble.
 Aby poznać reguły liczenia punktów i inne szczegóły gry, można zajrzeć na stronę \url{http://www.scrabble.info.pl/pobierz/zasady.pdf}.
 Nasz program korzysta ze słownika wyrazów dopuszczalnych w grach dostępnego na stronie Słownika Języka Polskiego \url{https://sjp.pl/slownik/growy/}.
+
 \section{Analiza obiektowa}
 
 \subsection{Zaimplementowane klasy}
