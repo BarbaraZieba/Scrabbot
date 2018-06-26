@@ -17,7 +17,7 @@
 % - komenda \url 
 \usepackage{hyperref}
 % - dołączanie obrazków
-\usepackage{graphics}
+\usepackage{graphicx}
 % - szersza strona
 \usepackage[nofoot,hdivide={2cm,*,2cm},vdivide={2cm,*,2cm}]{geometry}
 \frenchspacing
@@ -91,13 +91,40 @@ Klasa, która uruchamia program.
 \subsubsection{Klasy rozszerzające Swing}
 \paragraph{Okienka}
 \paragraph{\texttt{GameWindow}} Główne okno gry, zarządza komunikacją gracz-komputer.
-!!!obrazek!!!
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.5\textwidth]{1.png}
+\caption{Główne okno gry}
+\end{figure}
+
 \paragraph{Okienka typu \textit{pop-up}}
 \paragraph{\texttt{EndGameDialog}} Informuje, że gra się zakończyła. Wyświetla tabelę wyników graczy.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{3.png}
+\caption{Okienko zakończenia gry}
+\end{figure}
+
 \paragraph{\texttt{ExchangeDialog}} Wyświetla się, gdy gracz, naciśnie przycisk \texttt{Exchange}. Pozwala wymienić literki na stojaczku (kosztuje to jedną turę).
 Jeżeli literki które gracz chce wymienić nie zgadzają się z jego stojakiem, pojawia się komunikat o błędzie.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.5\textwidth]{2.png}
+\caption{Okienko wymiany liter}
+\end{figure}
+
 \paragraph{\texttt{MoveDialog}} Jest wyświetlany po kliknęciu wybranego pola. W okienku gracz wpisuje wybrane słowo.
 Jeśli jest poprawne --- okienko znika, jeśli nie --- pojawia się komunikat o błędzie.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.5\textwidth]{4.png}
+\caption{Okienko nowego ruchu}
+\end{figure}
+
 \paragraph{\texttt{NewGameDialog}} Pierwsze okienko, które widzi gracz.
 Pozwala wprowadzić do czterech graczy, którzy potem prowadzą rozgrywkę w \texttt{GameWindow}.
 \paragraph{\texttt{NewLettersDialog}} Pojawia się zawsze na koniec tury. Informuje gracza o stanie jego stojaczka.
