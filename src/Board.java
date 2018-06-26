@@ -3,18 +3,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Board {
-    public Character[][] board;
-    public ArrayList<Tile> tiles;
-    public ArrayList<Bonus> bonuses;
-    public Bonus.Type[][] bonusboard;
-    public Tree dictionary;
+    protected Character[][] board;
+    protected ArrayList<Tile> tiles;
+    protected Bonus.Type[][] bonusboard;
+    protected Tree dictionary;
 
 
     public Board() throws IOException {
         board = new Character[15][15];
         tiles = new ArrayList<Tile>();
         bonusboard = new Bonus.Type[15][15];
-        bonuses = new ArrayList<Bonus>();
         dictionary = Tree.getInstance();
 
         for (int i = 0; i < 15; i++)
@@ -48,14 +46,6 @@ public class Board {
             bonusboard[14 - DLcoordinates[i][0]][DLcoordinates[i][1]] = Bonus.Type.DoubleLetter;
             bonusboard[DLcoordinates[i][0]][14 - DLcoordinates[i][1]] = Bonus.Type.DoubleLetter;
             bonusboard[14 - DLcoordinates[i][0]][14 - DLcoordinates[i][1]] = Bonus.Type.DoubleLetter;
-        }
-
-        for (int i = 0; i < 15; i++) {
-            for (int j = 0; j < 15; j++) {
-                if (bonusboard[i][j] != Bonus.Type.Empty) {
-                    bonuses.add(new Bonus(i, j, bonusboard[i][j]));
-                }
-            }
         }
     }
 
