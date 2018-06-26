@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class GameWindow extends JFrame {
 
-    private BoardSwing boardSwing;
+    private BoardPanel boardSwing;
     private PlayerPanel playerPanel;
     private HistoryPanel historyPanel;
     private RackPanel rackPanel;
@@ -18,7 +18,7 @@ public class GameWindow extends JFrame {
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        boardSwing = new BoardSwing(game);
+        boardSwing = new BoardPanel(game);
         add(boardSwing, BorderLayout.CENTER);
 
         playerPanel = new PlayerPanel(game);

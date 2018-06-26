@@ -71,12 +71,31 @@ Drzewo wyrazów dopuszczonych do użytku w grze. Zostaje utworzone za pomocą pl
 \paragraph{Main}
 Klasa, która uruchamia program.
 \subsubsection{Klasy rozszerzające Swing}
-\paragraph{Rack}
-\paragraph{Rack}
-\paragraph{Rack}
-\paragraph{Rack}
-\paragraph{Rack}
-\paragraph{Rack}
+\paragraph{Okienka}
+\paragraph{\texttt{GameWindow}} Główne okno gry, zarządza komunikacją gracz-komputer.
+\paragraph{Okienka typu \textit{pop-up}}
+\begin{enumerate}
+\item[] \texttt{EndGameDialog} informuje, że gra się zakończyła. Wyświetla tabelę wyników graczy.
+\item[] \texttt{ExchangeDialog} wyświetla się, gdy gracz, naciśnie przycisk \texttt{Exchange}. Pozwala wymienić literki na stojaczek (kosztuje to jedną turę).
+Jeżeli literki które gracz chce wymienić nie zgadzają się z jego stojakiem, pojawia się komunikat o błędzie.
+\item[] \texttt{MoveDialog} jest wyświetlany po kliknęciu wybranego pola. W okienku gracz wpisuje wybrane słowo.
+Jeśli jest poprawne --- okienko znika, jeśli nie --- pojawia się komunikat o błędzie.
+\item[] \texttt{NewGameDialog} pierwsze okienko, jakie widzi gracz.
+Pozwala wprowadzić do czterech graczy, którzy potem prowadzą rozgrywkę w \texttt{GameWindow}.
+\item[] \texttt{NewLettersDialog} pojawia się zawsze na koniec tury. Informuje gracza o stanie jego stojaczka.
+\end{enumerate}
+\paragraph{Panele}
+\begin{enumerate}
+\item[] \texttt{BoardPanel} zajmuje centralną część okna gry. Zawiera pola-przyciski typu texttt{CellButton}, których przyciśnięcie wywołuje \texttt{MoveDialog}.
+\item[] \texttt{HistoryPanel} znajduje się po prawej stronie okna gry. Informuje o historii gry poprzez wypisywanie kolejnych ruchów na liście.
+\item[] \texttt{PlayerPanel}znajduje się po lewej stronie okna gry. Informuje o wynikach poszczególnych graczy. Obecny gracz jest podświetlony na zielono.
+\item[] \texttt{RackPanel} znajduje się na dole okna gry. Wyświetla \texttt{TilePanel} obecnego gracza, oraz zawiera przyciski \texttt{Pass} i \texttt{Exchange}.
+\item[] \texttt{TilePanel} wyświetla stojaczek wybranego gracza.
+\end{enumerate}
+\paragraph{Przyciski}
+\begin{enumerate}
+\item[] \texttt{CellButton}} wyświetla pojedyncze pole na planszy gry.
+\end{enumerate}
 \subsection{Diagram UML klas}
 Diagram wygenerowany za pomocą InteliJ IDEA.
 \section{Wskazówki dla programistów}
