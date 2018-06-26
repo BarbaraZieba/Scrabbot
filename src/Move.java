@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
 public class Move {
-    public Player player;
-    public ArrayList<Tile> tiles;
-    public int score;
-    public String word;
-    public ArrayList<Character> takenTiles;
+    public final Player player;
+    public final ArrayList<Tile> tiles;
+    public final int score;
+    public final String word;
+    public final ArrayList<Character> takenTiles;
 
     public Move(Player player, ArrayList<Tile> tiles, int score, String word, ArrayList<Character> takenTiles) {
         this.player = player;
@@ -20,7 +20,7 @@ public class Move {
         return player.getName() + "   " + word + " " + score;
     }
 
-    public boolean isPass(){
-        return  word.equals("-- PASS --");
+    public boolean isPass() {
+        return word.equals("-- PASS --") || (tiles == null && takenTiles == null);
     }
 }

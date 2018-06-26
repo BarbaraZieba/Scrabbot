@@ -3,22 +3,20 @@ import java.awt.*;
 
 public class PlayerPanel extends JPanel {
     class PlayerRenderer extends JPanel {
-        JLabel playerName;
-        JLabel playerScore;
-        Player player;
-        Game game;
+        private JLabel playerName;
+        private JLabel playerScore;
+        private Player player;
+        private Game game;
 
         public PlayerRenderer(Game game, Object player) {
-            if (player instanceof Player) {
-                this.player = (Player) player;
-                this.game = game;
-                playerName = new JLabel(this.player.getName());
-                playerScore = new JLabel("Score: " + this.player.getScore());
-                setLayout(new BorderLayout());
-                add(playerName, BorderLayout.CENTER);
-                add(playerScore, BorderLayout.SOUTH);
-                setPreferredSize(new Dimension(150, 50));
-            }
+            this.player = (Player) player;
+            this.game = game;
+            playerName = new JLabel(this.player.getName());
+            playerScore = new JLabel("Score: " + this.player.getScore());
+            setLayout(new BorderLayout());
+            add(playerName, BorderLayout.CENTER);
+            add(playerScore, BorderLayout.SOUTH);
+            setPreferredSize(new Dimension(150, 50));
         }
 
         @Override
@@ -31,8 +29,8 @@ public class PlayerPanel extends JPanel {
         }
     }
 
-    Bag bag;
-    JLabel bagLabel;
+    private Bag bag;
+    private JLabel bagLabel;
 
     public PlayerPanel(Game game) {
         setLayout(new FlowLayout());
@@ -51,6 +49,6 @@ public class PlayerPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        bagLabel.setText(bag.remainingTiles() + " tiles remain in the bag.");
+        bagLabel.setText(bag.remainingTiles() + " tiles in the bag.");
     }
 }

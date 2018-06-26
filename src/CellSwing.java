@@ -6,21 +6,13 @@ public class CellSwing extends JButton {
     private Board board;
     private int i, j;
 
-    public CellSwing(int i, int j, Board board) {
-        this(i, j);
-        this.board = board;
-    }
-
-    public CellSwing(int i, int j) {
+    public CellSwing(int i, int j, Board board, Bonus.Type type) {
         super();
-        this.type = Bonus.Type.Empty;
+        this.type = type;
+        this.board = board;
         this.i = i;
         this.j = j;
         addActionListener(e -> MoveDialog.call(i, j, this));
-    }
-
-    public void setBonus(Bonus.Type type) {
-        this.type = type;
     }
 
     @Override
@@ -55,14 +47,13 @@ public class CellSwing extends JButton {
         }
         g.fillRect(0, 0, width, height);
         Character c = board.board[i][j];
-        if (c!=null) c = Character.toUpperCase(c);
+        if (c != null) c = Character.toUpperCase(c);
         if (c == null) {
             g.setFont(new Font("Arial", Font.PLAIN, width / 3));
-
             g.setColor(Color.BLACK);
             g.drawString(message, width / 6, height * 2 / 3);
         } else {
-            Tile.paintTile(g, c, 3,3);
+            Tile.paintTile(g, c, 3, 3);
         }
     }
 }

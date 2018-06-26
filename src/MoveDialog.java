@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 public class MoveDialog extends JFrame {
     private int i;
@@ -21,7 +20,7 @@ public class MoveDialog extends JFrame {
         instance.game = game;
     }
 
-    private MoveDialog() throws HeadlessException {
+    private MoveDialog() {
         super();
 
         JButton jButton = new JButton("OK");
@@ -76,7 +75,7 @@ public class MoveDialog extends JFrame {
     }
 
     public static void call(int i, int j, Component caller) {
-        if(instance.game.checkGameOver())
+        if (instance.game.checkGameOver())
             return;
         instance.setLocationRelativeTo(caller);
         instance.i = i;
@@ -85,11 +84,5 @@ public class MoveDialog extends JFrame {
         instance.jTextField.setText("");
         instance.jLabel.setText("Word to be placed at column " + i + ", row " + j + ":");
         instance.jTextField.requestFocus();
-    }
-
-    public static MoveDialog getInstance() {
-        if (instance == null)
-            instance = new MoveDialog();
-        return instance;
     }
 }

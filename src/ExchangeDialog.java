@@ -7,17 +7,13 @@ import java.util.ArrayList;
 public class ExchangeDialog extends JFrame {
     private static ExchangeDialog instance = null;
     private JTextField jTextField;
-    private JButton jButton;
-    private boolean exchanged;
-    private TilePanel tilePanel;
     private Game game;
 
-    private ExchangeDialog(Game game) throws HeadlessException {
+    private ExchangeDialog(Game game) {
         super("Exchange tiles");
-        this.exchanged = false;
         this.game = game;
 
-        tilePanel = new TilePanel(game);
+        TilePanel tilePanel = new TilePanel(game);
 
         ActionListener actionListener = new ActionListener() {
             @Override
@@ -42,7 +38,7 @@ public class ExchangeDialog extends JFrame {
             }
         };
 
-        jButton = new JButton("Exchange");
+        JButton jButton = new JButton("Exchange");
         jButton.addActionListener(actionListener);
 
         jTextField = new JTextField();

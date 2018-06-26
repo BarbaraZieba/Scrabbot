@@ -2,16 +2,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class NewGameDialog extends JFrame {
 
-    public NewGameDialog() throws HeadlessException {
+    public NewGameDialog() {
         super("Starting a Scrabble Game");
+
         JTextField[] nameFields = new JTextField[4];
         JLabel[] labels = new JLabel[4];
-        setLocationRelativeTo(null);
+
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -44,6 +44,7 @@ public class NewGameDialog extends JFrame {
 
         JButton startButton = new JButton("Start");
         startButton.addActionListener(actionListener);
+
         JPanel playerPanel = new JPanel();
         playerPanel.setLayout(new GridLayout(0, 2));
         for (int i = 0; i < 4; i++) {
@@ -58,6 +59,5 @@ public class NewGameDialog extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
-
     }
 }

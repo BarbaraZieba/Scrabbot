@@ -1,10 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class RackPanel extends JPanel {
-    TilePanel tilePanel;
+    private TilePanel tilePanel;
 
     public RackPanel(Game game) {
         super();

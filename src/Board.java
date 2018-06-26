@@ -12,6 +12,7 @@ public class Board {
         tiles = new ArrayList<Tile>();
         bonusboard = new Bonus.Type[15][15];
         dictionary = Tree.loadPolishScrabble();
+        Tile.loadPolishScrabble();
 
         for (int i = 0; i < 15; i++)
             for (int j = 0; j < 15; j++)

@@ -3,7 +3,7 @@ public class Bonus {
     public final int row;
     public final int column;
 
-    public enum Type{
+    public enum Type {
         Empty,
         DoubleWord,
         TripleWord,

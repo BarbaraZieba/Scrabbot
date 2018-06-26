@@ -1,8 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class GameWindow extends JFrame {
@@ -11,13 +8,10 @@ public class GameWindow extends JFrame {
     private PlayerPanel playerPanel;
     private HistoryPanel historyPanel;
     private RackPanel rackPanel;
-    private final int height;
-    private final int width;
-    private Game game;
 
-    public GameWindow(ArrayList<Player> players) throws IOException {
+    public GameWindow(ArrayList<Player> players) {
         super("Scrabbot");
-        this.game = new Game(this, players);
+        Game game = new Game(this, players);
         MoveDialog.setGame(game);
         ExchangeDialog.setGame(game);
         NewLettersDialog.setGame(game);
@@ -40,18 +34,6 @@ public class GameWindow extends JFrame {
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
-
-        // well at this point that's legacy code
-        height = getHeight();
-        width = getWidth();
-        addComponentListener(new ComponentAdapter() {
-            //this doesnt really works
-            public void componentResized(ComponentEvent arg0) {
-                Rectangle b = arg0.getComponent().getBounds();
-                arg0.getComponent().setBounds(b.x, b.y, b.width, (b.width * height) / width);
-
-            }
-        });
 
         rackPanel.getTilePanel().setShouldPaintTiles(false);
         game.callNextPlayer();

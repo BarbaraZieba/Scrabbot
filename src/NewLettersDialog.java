@@ -51,8 +51,7 @@ public class NewLettersDialog extends JFrame {
     }
 
     public static void call(Component caller, Player player) {
-        if (instance.game.checkGameOver())
-            return;
+        if (instance.game.checkGameOver()) return;
         instance.setVisible(true);
         instance.setLocationRelativeTo(caller);
         instance.tilePanel.setPlayer(player);

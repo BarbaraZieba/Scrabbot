@@ -124,10 +124,6 @@ public class Game extends Board {
         return bag;
     }
 
-    public GameWindow getGameWindow() {
-        return gameWindow;
-    }
-
     public void callNextPlayer() {
         if (gameOver)
             return;
