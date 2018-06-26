@@ -44,17 +44,35 @@ Po uruchomieniu programu użytkownik proszony jest o podanie imion graczy. Gracz
 \subsection{Ruch gracza}
 Gracz musi w swoim ruchu wykonać jedną z następujących akcji:
 \begin{enumerate}
-\item[] \textbf{Położenie słowa.} Aby położyć słowo gracz powinieć kliknąć kratkę planszy, w której będzie się znajdować pierwsza litera układanego słowa. Uwaga: Może to być litera już znajdująca się na planszy.
-W nowym okienku należy wpisać jakie to będzie słowo (również litery już znajdujące się na planszy) i zaznaczyć czy ma zostać położone pionowo (\textit{vertical}) czy poziomo (\textit{horizontal}). Wszystkie tworzone przy ruchu słowa muszą być poprawne, a dokładane litery łączyć się z już ułożonymi. Jeśli ruch będzie poprawny odpowiednie litery gracza pojawią się na planszy, a on otrzyma nowe.
-\item[] \textbf{Wymiana liter} Gracz może w swoim ruchu wymienić od jednej do 7 (wszystkich) liter, które posiada. Za taki ruch nie otrzymuje punktów. Aby dokonać wymiany należy kliknąć przycisk \textit{Exchannge tiles} znajdujący się obok literek na ręku, a następnie wpisać bez spacji litery do wymiany.
-\item[] \textbf{Pass} Po kliknięciu przycisku \textit{Pass} gracz opuszcza swoją kolejkę. Może wykonać takiruch, kiedy na przeykład nie może już dołożyć żadnej litery.
+\item[] \textbf{Położenie słowa.} 
+Aby położyć słowo gracz powinieć kliknąć kratkę planszy, w której będzie się znajdować pierwsza litera układanego słowa. 
+Uwaga: Może to być litera już znajdująca się na planszy.
+W nowym okienku należy wpisać jakie to będzie słowo (również litery już znajdujące się na planszy)
+i zaznaczyć czy ma zostać położone pionowo (\textit{vertical}) czy poziomo (\textit{horizontal}).
+Wszystkie tworzone przy ruchu słowa muszą być poprawne, a dokładane litery łączyć się z już ułożonymi.
+Jeśli ruch będzie poprawny odpowiednie litery gracza pojawią się na planszy, a on otrzyma nowe.
+\item[] \textbf{Wymiana liter}
+Gracz może w swoim ruchu wymienić od jednej do 7 (wszystkich) liter, które posiada.
+Za taki ruch nie otrzymuje punktów. 
+Aby dokonać wymiany należy kliknąć przycisk \textit{Exchange tiles} znajdujący się obok literek na ręku, a następnie wpisać bez spacji litery do wymiany.
+\item[] \textbf{Pass}
+Po kliknięciu przycisku \textit{Pass} gracz opuszcza swoją kolejkę.
+Może wykonać takiruch, kiedy na przeykład nie może już dołożyć żadnej litery.
 \end{enumerate}
-Po ruchu litery gracza zostają schowane i pojawia się komunikat o ruchu następnego gracza. Należy przekazać mu komputer i kliknąć \textit{OK}.
+Po ruchu litery gracza zostają schowane i pojawia się komunikat o ruchu następnego gracza.
+Należy przekazać mu komputer i kliknąć \textit{OK}.
 \subsection{Koniec gry}
+Gra kończy się, gdy wszyscy gracze z rzędu spasują, lub jeden z graczy wykorzysta wszystkie swoje płytki, a woreczek z płytkami będzie pusty.
+Zwycięzcą zostaje gracz o najwyższej liczbie punktów.
+Pojawia się okienko \texttt{EndGameDialog}.
 \subsection{Cofanie ruchu}
-Gracze sami powinni zdecydować, jak chcą korzystać z tej opcji. Sugerujemy, żeby w razie pomyłki we wpisywaniu użytkownik mógł zgłosić (niezwłocznie), że chce cofnąć ostatni ruch. Wtedy następny gracz powinieć skorzystać z przycisku \textit{Revert last move} i dać kolejną szansę koledze.
+Gracze sami powinni zdecydować, jak chcą korzystać z tej opcji.
+Sugerujemy, żeby w razie pomyłki we wpisywaniu użytkownik mógł zgłosić (niezwłocznie), że chce cofnąć ostatni ruch.
+Wtedy następny gracz powinieć skorzystać z przycisku \textit{Revert last move} i dać kolejną szansę koledze.
 \subsection{Szczegółowe zasady gry}
-Program kopiuje zasady gry Scrabble. Aby poznać reguły liczenia punktów i inne szczegóły gry, można zajrzeć na stronę \url{http://www.scrabble.info.pl/pobierz/zasady.pdf}. Nasz program korzysta ze słownika wyrazów dopuszczalnych w grach dostępnego na stronie Słownika Języka Polskiego \url{https://sjp.pl/slownik/growy/}.
+Program kopiuje zasady gry Scrabble.
+Aby poznać reguły liczenia punktów i inne szczegóły gry, można zajrzeć na stronę \url{http://www.scrabble.info.pl/pobierz/zasady.pdf}.
+Nasz program korzysta ze słownika wyrazów dopuszczalnych w grach dostępnego na stronie Słownika Języka Polskiego \url{https://sjp.pl/slownik/growy/}.
 \section{Analiza obiektowa}
 \subsection{Zaimplementowane klasy}
 \subsubsection{Logika gry}
