@@ -12,7 +12,7 @@ public class ExchangeDialog extends JFrame {
     private JTextField jTextField;
     private JButton jButton;
     private boolean exchanged;
-    private RackPanel.TilePanel tilePanel;
+    private TilePanel tilePanel;
     private Game game;
 
     private ExchangeDialog(Game game) throws HeadlessException {
@@ -20,7 +20,7 @@ public class ExchangeDialog extends JFrame {
         this.exchanged = false;
         this.game = game;
 
-        tilePanel = new RackPanel.TilePanel(game);
+        tilePanel = new TilePanel(game);
 
         ActionListener actionListener = new ActionListener() {
             @Override

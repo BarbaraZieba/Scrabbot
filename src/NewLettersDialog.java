@@ -8,13 +8,13 @@ import java.awt.event.WindowEvent;
 public class NewLettersDialog extends JFrame {
     private static NewLettersDialog instance = null;
     private JButton jButton;
-    private RackPanel.TilePanel tilePanel;
+    private TilePanel tilePanel;
     private Game game;
 
     private NewLettersDialog(Game game) throws HeadlessException {
         super("Your tiles");
         this.game = game;
-        tilePanel = new RackPanel.TilePanel(game);
+        tilePanel = new TilePanel(game);
 
         ActionListener actionListener = new ActionListener() {
             @Override
