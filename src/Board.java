@@ -180,5 +180,3 @@ public class Board {
         return bonusboard[column][row];
     }
 }
-
-

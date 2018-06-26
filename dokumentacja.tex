@@ -57,24 +57,26 @@ Gracze sami powinni zdecydować, jak chcą korzystać z tej opcji. Sugerujemy, �
 Program kopiuje zasady gry Scrabble. Aby poznać reguły liczenia punktów i inne szczegóły gry, można zajrzeć na stronę \url{http://www.scrabble.info.pl/pobierz/zasady.pdf}. Nasz program korzysta ze słownika wyrazów dopuszczalnych w grach dostępnego na stronie Słownika Języka Polskiego \url{https://sjp.pl/slownik/growy/}.
 \section{Analiza obiektowa}
 \subsection{Zaimplementowane klasy}
-\subsubsection{Board} Jedna z głownych klas programu. Przechowuje informacje o stanie planszy: położonych literach, specjalnych polach i słowniku, który decyduje, które wyrazy są poprawne. Posiada dwie metody. Pierwsza, \texttt{placeWord} przyjmuje słowo, które chcemy położyć na planszy i jego pozycję. Jeśli jest to poprawny ruch zwraca parę listę płytek użytych przez gracza i liczbę punktów zdobytych za tej ruch. Kolejna, \texttt{value} służy do liczenia punktów zdobytych za ułożenie danego słowa.
-\subsubsection{Game} Najważniejsza klasa informująca o przebiegu gry. Dziedziczy z klasy \texttt{Board}, a oprócz tego przechowuje listę graczy, listę ruchów (historię) i woreczek dostępnych literek.
-\subsubsection{Rack} Po angielsku oznacza stojak na literki. Zawiera listę płytek i udostępnia metody, które pozwalają na aktualizację tej listy.
-\subsubsection{Player} Klasa dziedzicząca po \texttt{Rack} i odpowiadająca za informacje na temat gracza. Zawiera jego imię i bieżącą liczbę punktów.
-\subsubsection{Bag} Reprezentuje woreczek z płytkami, które zostały do wylosowania. Jej pole to lista płytek, a metody udostępniają operacje do wykonania na tej liście, np. wyjęcie losowej płytki.
-\subsubsection{Move} Klasa ruchu. Przydatna do pamiętania historii gry i wyświetlania jej przebiegu.
-\subsubsection{Tile} Reprezentuje płytkę na planszy. Tutaj mamy również statyczne metody \texttt{getValueOf} (mówi ile punktów jest warta dana litera) i \texttt{paintTile} (służy do rysowania płytek).
-\subsubsection{Bonus} Odpowiada za specjalne pola planszy. Zawiera informacje informacje na temat bonusów powiększających liczbę punktów zdobywanych za ułożenie słowa. Posiada klasę wewnetrzną \texttt{Type} reprezentującą typy bonusów.
-\subsubsection{Tree}
+\subsubsection{Logika gry}
+\paragraph{Board} Jedna z głownych klas programu. Przechowuje informacje o stanie planszy: położonych literach, specjalnych polach i słowniku, który decyduje, które wyrazy są poprawne. Posiada dwie metody. Pierwsza, \texttt{placeWord} przyjmuje słowo, które chcemy położyć na planszy i jego pozycję. Jeśli jest to poprawny ruch zwraca parę listę płytek użytych przez gracza i liczbę punktów zdobytych za tej ruch. Kolejna, \texttt{value} służy do liczenia punktów zdobytych za ułożenie danego słowa.
+\paragraph{Game} Najważniejsza klasa informująca o przebiegu gry. Dziedziczy z klasy \texttt{Board}, a oprócz tego przechowuje listę graczy, listę ruchów (historię) i woreczek dostępnych literek.
+\paragraph{Rack} Po angielsku oznacza stojak na literki. Zawiera listę płytek i udostępnia metody, które pozwalają na aktualizację tej listy.
+\paragraph{Player} Klasa dziedzicząca po \texttt{Rack} i odpowiadająca za informacje na temat gracza. Zawiera jego imię i bieżącą liczbę punktów.
+\paragraph{Bag} Reprezentuje woreczek z płytkami, które zostały do wylosowania. Jej pole to lista płytek, a metody udostępniają operacje do wykonania na tej liście, np. wyjęcie losowej płytki.
+\paragraph{Move} Klasa ruchu. Przydatna do pamiętania historii gry i wyświetlania jej przebiegu.
+\paragraph{Tile} Reprezentuje płytkę na planszy. Tutaj mamy również statyczne metody \texttt{getValueOf} (mówi ile punktów jest warta dana litera) i \texttt{paintTile} (służy do rysowania płytek).
+\paragraph{Bonus} Odpowiada za specjalne pola planszy. Zawiera informacje informacje na temat bonusów powiększających liczbę punktów zdobywanych za ułożenie słowa. Posiada klasę wewnetrzną \texttt{Type} reprezentującą typy bonusów.
+\paragraph{Tree}
 Drzewo wyrazów dopuszczonych do użytku w grze. Zostaje utworzone za pomocą pliku txt upublicznionego przez stronę www.sjp.pl. Zawiera wewnętrzną klasę \texttt{Node}. 
-\subsubsection{Main}
+\paragraph{Main}
 Klasa, która uruchamia program.
-\subsubsection{Rack}
-\subsubsection{Rack}
-\subsubsection{Rack}
-\subsubsection{Rack}
-\subsubsection{Rack}
-\subsubsection{Rack}
+\subsubsection{Klasy rozszerzające Swing}
+\paragraph{Rack}
+\paragraph{Rack}
+\paragraph{Rack}
+\paragraph{Rack}
+\paragraph{Rack}
+\paragraph{Rack}
 \subsection{Diagram UML klas}
 Diagram wygenerowany za pomocą InteliJ IDEA.
 \section{Wskazówki dla programistów}

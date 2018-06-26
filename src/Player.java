@@ -22,7 +22,7 @@ public class Player extends Rack {
     }
 
     public void addToScore(int score){
-        this.score = Math.min(0,this.score-score);
+        this.score += score;
     }
 
     public void draw(Bag bag) {
