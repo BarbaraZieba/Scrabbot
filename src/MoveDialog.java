@@ -35,7 +35,7 @@ public class MoveDialog extends JFrame {
         horizontalButton.setSelected(true);
 
         jTextField = new JTextField();
-        jTextField.setPreferredSize(new Dimension(100, 20));
+        jTextField.setPreferredSize(new Dimension(150, 20));
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -69,7 +69,7 @@ public class MoveDialog extends JFrame {
         add(radioPanel);
         add(jButton);
         add(cancelButton);
-        setSize(250, 150);
+        setSize(300, 150);
         setResizable(false);
         setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
