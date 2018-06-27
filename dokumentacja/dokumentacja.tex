@@ -92,7 +92,7 @@ Nasz program korzysta ze słownika wyrazów dopuszczalnych w grach dostępnego n
 \paragraph{Bag} Reprezentuje woreczek z płytkami, które zostały do wylosowania. Jej pole to lista płytek, a metody udostępniają operacje do wykonania na tej liście, np. wyjęcie losowej płytki.
 \paragraph{Move} Klasa ruchu. Przydatna do pamiętania historii gry i wyświetlania jej przebiegu.
 \paragraph{Tile} Reprezentuje płytkę na planszy. Tutaj mamy również statyczne metody \texttt{getValueOf} (mówi ile punktów jest warta dana litera) i \texttt{paintTile} (służy do rysowania płytek).
-\paragraph{Bonus} Odpowiada za specjalne pola planszy. Zawiera informacje informacje na temat bonusów powiększających liczbę punktów zdobywanych za ułożenie słowa. Posiada klasę wewnetrzną \texttt{Type} reprezentującą typy bonusów.
+\paragraph{Bonus} Odpowiada za specjalne pola planszy. Zawiera informacje informacje na temat bonusów powiększających liczbę punktów zdobywanych za ułożenie słowa.
 \paragraph{Tree}
 Drzewo wyrazów dopuszczonych do użytku w grze. Zostaje utworzone za pomocą pliku txt upublicznionego przez stronę www.sjp.pl. Zawiera wewnętrzną klasę \texttt{Node}. 
 \paragraph{Main}
@@ -147,13 +147,7 @@ Jeśli jest poprawne --- okienko znika, jeśli nie --- pojawia się komunikat o 
 \end{figure}
 
 \paragraph{\texttt{NewGameDialog}} Pierwsze okienko, które widzi gracz.
-Pozwala wprowadzić do czterech graczy, którzy potem prowadzą rozgrywkę w \texttt{GameWindow}.
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=0.3\textwidth]{5.png}
-\caption{Okienko nowej gry}
-\end{figure}
+Pozwala wprowadzić imiona do czterech graczy, którzy będą prowadzić rozgrywkę.
 
 \paragraph{\texttt{NewLettersDialog}} Pojawia się zawsze na koniec tury. Informuje gracza o stanie jego stojaczka.
 
@@ -174,5 +168,5 @@ Diagramy wygenerowane za pomocą InteliJ IDEA.
 \end{figure}
 
 \section{Wskazówki dla programistów}
-Projekt jest otwarty na dalszą pracę nad nim. Jedną z opcji jego prostego rozbudowania jest umożliwienie gry w innych językach lub na innych zasadach. Można również pokusić się o dodanie możliwości zmierzenia się w grze z komputerem.
+Projekt jest otwarty na dalszą pracę nad nim. Jedną z opcji jego prostego rozbudowania jest umożliwienie gry w innych językach lub na innych zasadach. Można również pokusić się o dodanie możliwości zmierzenia się w grze z komputerem. \textbf{Uwaga!} Pliki gry kodowane są w formacie \texttt{UTF-8}.
 \end{document}

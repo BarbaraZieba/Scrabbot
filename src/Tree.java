@@ -1,6 +1,5 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import javax.swing.*;
+import java.io.*;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -28,6 +27,8 @@ public class Tree {
         try {
             return new Tree("slowa.txt");
         } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Could not load polish dictionary.\n"
+                    + "Make sure that 'slowa.txt' is in the same folder as the executable file.\n" + e.getMessage());
             e.printStackTrace();
             return null;
         }
@@ -47,8 +48,7 @@ public class Tree {
     }
 
     private void wordsfromfile(String filePath) throws IOException {
-        FileReader fileReader = new FileReader(filePath);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF8"));
         String textLine = bufferedReader.readLine();
         while (textLine != null) {
             this.add(textLine);
