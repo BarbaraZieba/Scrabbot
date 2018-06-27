@@ -2,11 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CellButton extends JButton {
-    private Bonus.Type type;
+    private Bonus type;
     private Board board;
     private int i, j;
 
-    public CellButton(int i, int j, Board board, Bonus.Type type) {
+    public CellButton(int i, int j, Board board, Bonus type) {
         super();
         this.type = type;
         this.board = board;

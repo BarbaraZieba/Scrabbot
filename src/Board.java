@@ -4,47 +4,47 @@ import java.util.ArrayList;
 public class Board {
     protected Character[][] board;
     protected ArrayList<Tile> tiles;
-    protected Bonus.Type[][] bonusboard;
+    protected Bonus[][] bonusboard;
     protected Tree dictionary;
 
     public Board() {
         board = new Character[15][15];
         tiles = new ArrayList<Tile>();
-        bonusboard = new Bonus.Type[15][15];
+        bonusboard = new Bonus[15][15];
         dictionary = Tree.loadPolishScrabble();
         Tile.loadPolishScrabble();
 
         for (int i = 0; i < 15; i++)
             for (int j = 0; j < 15; j++)
-                bonusboard[i][j] = Bonus.Type.Empty;
-        bonusboard[7][7] = Bonus.Type.Center;
+                bonusboard[i][j] = Bonus.Empty;
+        bonusboard[7][7] = Bonus.Center;
         int TWcoordinates[][] = {{0, 0}, {0, 7}, {7, 0}};
         int DWcoordinates[][] = {{1, 1}, {2, 2}, {3, 3}, {4, 4}};
         int TLcoordinates[][] = {{1, 5}, {5, 1}, {5, 5}};
         int DLcoordinates[][] = {{0, 3}, {3, 0}, {2, 6}, {6, 2}, {3, 7}, {7, 3}, {6, 6}};
         for (int i = 0; i < 3; i++) {
-            bonusboard[TWcoordinates[i][0]][TWcoordinates[i][1]] = Bonus.Type.TripleWord;
-            bonusboard[14 - TWcoordinates[i][0]][TWcoordinates[i][1]] = Bonus.Type.TripleWord;
-            bonusboard[TWcoordinates[i][0]][14 - TWcoordinates[i][1]] = Bonus.Type.TripleWord;
-            bonusboard[14 - TWcoordinates[i][0]][14 - TWcoordinates[i][1]] = Bonus.Type.TripleWord;
+            bonusboard[TWcoordinates[i][0]][TWcoordinates[i][1]] = Bonus.TripleWord;
+            bonusboard[14 - TWcoordinates[i][0]][TWcoordinates[i][1]] = Bonus.TripleWord;
+            bonusboard[TWcoordinates[i][0]][14 - TWcoordinates[i][1]] = Bonus.TripleWord;
+            bonusboard[14 - TWcoordinates[i][0]][14 - TWcoordinates[i][1]] = Bonus.TripleWord;
         }
         for (int i = 0; i < 4; i++) {
-            bonusboard[DWcoordinates[i][0]][DWcoordinates[i][1]] = Bonus.Type.DoubleWord;
-            bonusboard[14 - DWcoordinates[i][0]][DWcoordinates[i][1]] = Bonus.Type.DoubleWord;
-            bonusboard[DWcoordinates[i][0]][14 - DWcoordinates[i][1]] = Bonus.Type.DoubleWord;
-            bonusboard[14 - DWcoordinates[i][0]][14 - DWcoordinates[i][1]] = Bonus.Type.DoubleWord;
+            bonusboard[DWcoordinates[i][0]][DWcoordinates[i][1]] = Bonus.DoubleWord;
+            bonusboard[14 - DWcoordinates[i][0]][DWcoordinates[i][1]] = Bonus.DoubleWord;
+            bonusboard[DWcoordinates[i][0]][14 - DWcoordinates[i][1]] = Bonus.DoubleWord;
+            bonusboard[14 - DWcoordinates[i][0]][14 - DWcoordinates[i][1]] = Bonus.DoubleWord;
         }
         for (int i = 0; i < 3; i++) {
-            bonusboard[TLcoordinates[i][0]][TLcoordinates[i][1]] = Bonus.Type.TripleLetter;
-            bonusboard[14 - TLcoordinates[i][0]][TLcoordinates[i][1]] = Bonus.Type.TripleLetter;
-            bonusboard[TLcoordinates[i][0]][14 - TLcoordinates[i][1]] = Bonus.Type.TripleLetter;
-            bonusboard[14 - TLcoordinates[i][0]][14 - TLcoordinates[i][1]] = Bonus.Type.TripleLetter;
+            bonusboard[TLcoordinates[i][0]][TLcoordinates[i][1]] = Bonus.TripleLetter;
+            bonusboard[14 - TLcoordinates[i][0]][TLcoordinates[i][1]] = Bonus.TripleLetter;
+            bonusboard[TLcoordinates[i][0]][14 - TLcoordinates[i][1]] = Bonus.TripleLetter;
+            bonusboard[14 - TLcoordinates[i][0]][14 - TLcoordinates[i][1]] = Bonus.TripleLetter;
         }
         for (int i = 0; i < 7; i++) {
-            bonusboard[DLcoordinates[i][0]][DLcoordinates[i][1]] = Bonus.Type.DoubleLetter;
-            bonusboard[14 - DLcoordinates[i][0]][DLcoordinates[i][1]] = Bonus.Type.DoubleLetter;
-            bonusboard[DLcoordinates[i][0]][14 - DLcoordinates[i][1]] = Bonus.Type.DoubleLetter;
-            bonusboard[14 - DLcoordinates[i][0]][14 - DLcoordinates[i][1]] = Bonus.Type.DoubleLetter;
+            bonusboard[DLcoordinates[i][0]][DLcoordinates[i][1]] = Bonus.DoubleLetter;
+            bonusboard[14 - DLcoordinates[i][0]][DLcoordinates[i][1]] = Bonus.DoubleLetter;
+            bonusboard[DLcoordinates[i][0]][14 - DLcoordinates[i][1]] = Bonus.DoubleLetter;
+            bonusboard[14 - DLcoordinates[i][0]][14 - DLcoordinates[i][1]] = Bonus.DoubleLetter;
         }
     }
 
@@ -176,7 +176,7 @@ public class Board {
         return value;
     }
 
-    public Bonus.Type getBonusAt(int column, int row) {
+    public Bonus getBonusAt(int column, int row) {
         return bonusboard[column][row];
     }
 }
